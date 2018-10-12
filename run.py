@@ -12,8 +12,8 @@ def hello_python():
     message = "Hello Python!"
     return render_template("test.html", message = message)
 
-@app.rout("/front-test")
-def front-test():
+@app.route("/front-test")
+def front_test():
     return render_template("front-test.html")
 
 '''
