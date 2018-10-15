@@ -1,8 +1,4 @@
 import os
-'''
-https://devcenter.heroku.com/articles/config-vars
-'''
-from boto.s3.connection import S3Connection
 import psycopg2
 
 class SensorProcess():
@@ -21,21 +17,19 @@ http://h2shiki.hateblo.jp/entry/2016/05/05/210738
 class DBProcess():
     def __init__(self):
         self.tableName = "nagara"
-        s3 = S3Connection(
-            os.environ["DB_HOSTNAME"],
-            os.environ["DB_DATABASE"],
-            os.environ["DB_PORT"],
-            os.environ["DB_USER"],
-            os.environ["DB_PASSWORD"]
-        )
+        self.DB_HOSTNAME = os.environ["DB_HOSTNAME"]
+        self.DB_DATABASE = os.environ["DB_DATABASE"]
+        self.DB_PORT = os.environ["DB_PORT"]
+        self.DB_USER = os.environ["DB_USER"]
+        self.DB_PASSWORD = os.environ["DB_PASSWORD"]
     
     def getDBConn(self):
         return psycopg2.connect(
-            host = DB_HOSTNAME,
-            database = DB_DATABASE,
-            port = DB_PORT,
-            user = DB_USER,
-            password = DB_PASSWORD
+            host = self.DB_HOSTNAME,
+            database = self.DB_DATABASE,
+            port = self.DB_PORT,
+            user = self.DB_USER,
+            password = self.DB_PASSWORD
         )
     
     def closeConn(self, cursor, conn):
