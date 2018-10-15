@@ -1,6 +1,10 @@
 from flask import Flask,render_template
+<<<<<<< HEAD
 from modules import DBProcess
 from modules import BasicProcess
+=======
+from modules import Modules
+>>>>>>> 0f8bc87b795508baea0258eedcf09fdf29b6aab7
 
 app = Flask(__name__)
 dp = DBProcess()
@@ -18,6 +22,7 @@ def hello_python():
 def front_test():
     return render_template("front-test.html")
 
+<<<<<<< HEAD
 
 @app.route("/test_postgresql")
 def hello_postgresql():
@@ -25,5 +30,11 @@ def hello_postgresql():
     return result
 
 
+=======
+'''
+@app.route("/test_postgresql")
+def hello_postgresql():pass
+'''
+>>>>>>> 0f8bc87b795508baea0258eedcf09fdf29b6aab7
 if __name__ == "__main__":
     app.run()
