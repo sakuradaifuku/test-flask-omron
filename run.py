@@ -15,9 +15,9 @@ def hello_python():
     message = "Hello Python!"
     return render_template("test.html", message = message)
 
-@app.route("/front-test")
+@app.route("/front_test")
 def front_test():
-    return render_template("front-test.html")
+    return render_template("front_test.html")
 
 
 @app.route("/test_postgresql")
