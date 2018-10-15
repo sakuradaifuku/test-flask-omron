@@ -23,7 +23,7 @@ def front_test():
 @app.route("/test_postgresql")
 def hello_postgresql():
     result = dp.dbSelect("*")
-    return result
+    return render_template("test.html", message = result)
 
 
 if __name__ == "__main__":
