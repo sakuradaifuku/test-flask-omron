@@ -18,7 +18,9 @@ def hello_python():
 @app.route("/front_test")
 def front_test():
     return render_template("front_test.html")
-
+@aoo.route("/vr")
+def vr():
+    return render_template("vr.html")
 
 
 @app.route("/test_postgresql")
