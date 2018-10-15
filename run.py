@@ -20,6 +20,7 @@ def front_test():
     return render_template("front_test.html")
 
 
+
 @app.route("/test_postgresql")
 def hello_postgresql():
     result = dp.dbSelect("*")
