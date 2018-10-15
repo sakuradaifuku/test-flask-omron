@@ -47,7 +47,7 @@ class DBProcess():
         '''
         conn = self.getDBConn()
         cursor = conn.cursor()
-        cursor.execute("select "+ str + " from " + self.tableName)
+        cursor.execute("select "+ attr + " from " + self.tableName)
         result = cursor.fetchall()
         self.closeConn(cursor, conn)
         return result
