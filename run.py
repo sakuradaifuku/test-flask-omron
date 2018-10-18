@@ -8,10 +8,6 @@ dp = DBProcess()
 
 @app.route("/")
 def hello_world():
-    return "Hello World!"
-
-@app.route("/python")
-def hello_python():
     message = "Hello Python!"
     return render_template("test.html", message = message)
 
