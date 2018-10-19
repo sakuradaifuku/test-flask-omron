@@ -11,8 +11,7 @@
         <p>{{ message }}</p>
         {% endif %}
         {% for psqldata in psqldatas %}
-        <p>{{ psqldata }}</p>
-        <p>{{ psqldata[0] }}:{{ psqldata[2] }}</p>
+        <p>{{ psqldata["id"] }}:{{ psqldata["calorie"] }}:{{ psqldata["datetime"] }}</p>
         {% endfor %}
         <ul>
             <li><a href="/front_test">front_test</a></li>

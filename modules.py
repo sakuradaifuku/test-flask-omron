@@ -92,10 +92,19 @@ class BasicProcess():
         #self.sp = SensorProcess()
     
     def getDBCalorie(self):
-        calorie = self.dp.dbSelect("calorie")
+        calorie = self.dp.dbSelect("id,calorie,datetime")
         return calorie
     
-    def shapeData():
+    def shapeCalorieData(self, _calories):
         '''
-        []
+        [引数]
+        ●(list(list))[[data1_1,data1_2,data1_3],[data2_1,...],...]
+        [戻り値]
+        ●(list(dict))[{"id": data1_1, "calorie":data1_2, "datetime":data1_3},{"id": data2_1, ...},...]
         '''
+        calories = []
+        for _calorie in _calories:
+            calories.append({"id":_calorie[0], "calorie":_calorie[1], "datetime":_calorie[2]})
+        
+        return calories
+

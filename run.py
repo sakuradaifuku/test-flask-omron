@@ -1,10 +1,10 @@
 from flask import Flask,render_template
 
-from modules import DBProcess
+#from modules import DBProcess
 from modules import BasicProcess
 
 app = Flask(__name__)
-dp = DBProcess()
+bp = BasicProcess()
 
 @app.route("/")
 def hello_world():
@@ -23,9 +23,9 @@ def vr():
 
 @app.route("/test_postgresql")
 def hello_postgresql():
-    dp.dbInsert({"user_id":"a001", "steps_num":12230, "calorie":300})
-    result = dp.dbSelect("id,calorie,datetime")
-    return render_template("test.html", psqldatas = result)
+    _calories = bp.getDBCalorie()
+    calories = bp.shapeCalorieData(_calories)
+    return render_template("test.html", psqldatas = calories)
 
 
 if __name__ == "__main__":
