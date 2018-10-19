@@ -37,12 +37,22 @@ class DBProcess():
         cursor.close()
         conn.close()
     
+    def getMaxID(self):
+        conn = self.getDBConn()
+        cursor = conn.cursor()
+        sql = "select max(id) from {0}".format(self.tableName)
+        cursor.execute(sql)
+        result = cursor.fetchone()
+        self.closeConn(cursor, conn)
+        return result
+    
     def dbInsert(self, record):
         '''
         [入力]
         ●record
         ・(dict){"attr1":data1, "attr2":data2,...}
         ・シリアルプライマリーキーであるidだけは追記しないように！
+        '''
         '''
         attrs = ""
         datas = ""
@@ -55,10 +65,12 @@ class DBProcess():
             else:
                 attrs += str(attr)
                 datas += "{0},".format(str(data)) if attr!="user_id" else "'{0}',".format(data)
-
+        '''
         conn = self.getDBConn()
-        cursor = conn.cursor()        
-        sql = "insert into {0}({1}) values({2})".format(self.tableName, attrs, datas)
+        cursor = conn.cursor()
+        id = str(self.getMaxID())
+        sql = "insert into {0}(id,user_id,calorie,datetime) values({1},'a001',400,{2})".format(self.tableName, id, str(record))
+        #sql = "insert into {0}(id,{1}) values({2},{3})".format(self.tableName, attrs, id, datas)
         cursor.execute(sql)
     
     def dbSelect(self, attr):
