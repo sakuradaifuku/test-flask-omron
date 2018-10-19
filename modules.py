@@ -42,7 +42,7 @@ class DBProcess():
         cursor = conn.cursor()
         sql = "select max(id) from {0}".format(self.tableName)
         cursor.execute(sql)
-        result = cursor.fetchall()
+        result = cursor.fetchone()
         self.closeConn(cursor, conn)
         return result
     
