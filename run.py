@@ -24,7 +24,7 @@ def vr():
 @app.route("/test_postgresql")
 def hello_postgresql():
     result = dp.dbSelect("*")
-    return render_template("test.html", message = result)
+    return render_template("test.html", psqldatas = result)
 
 
 if __name__ == "__main__":
