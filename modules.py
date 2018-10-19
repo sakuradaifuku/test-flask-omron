@@ -66,7 +66,7 @@ class DBProcess():
                 i += 1
             else:
                 attrs += str(attr)
-                datas += "{0},".format(str(data)) if attr!="user_id" else "'{0}',".format(data)
+                datas += "{0},".format(str(data)) if attr!="user_id" else "'{0}'".format(data)
 
         conn = self.getDBConn()
         cursor = conn.cursor()
