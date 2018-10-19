@@ -44,7 +44,7 @@ class DBProcess():
     
     def dbInsert(self, record):
         '''
-        [入力]
+        [引数]
         ●record
         ・(dict){"attr1":data1, "attr2":data2,...}
         ・シリアルプライマリーキーであるidとdatetimeは引数にしない！
@@ -71,10 +71,13 @@ class DBProcess():
     
     def dbSelect(self, attr):
         '''
-        [入力]
+        [引数]
         ●attr
         ・(str)"項目1,項目2,..."
         ・すべての項目を取得する場合は"*"のみ．
+        [戻り値]
+        ●(list)[data1,data2,...]
+        ・対応するアトリビュートのみ．
         '''
         with self.getDBConn() as conn:
             with conn.cursor() as cursor:
@@ -92,4 +95,7 @@ class BasicProcess():
         calorie = self.dp.dbSelect("calorie")
         return calorie
     
-    #def shapeData():
+    def shapeData():
+        '''
+        []
+        '''
