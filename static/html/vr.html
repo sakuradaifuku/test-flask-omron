@@ -6,27 +6,38 @@
   <title>ながら測定器</title>
   <link rel='stylesheet' href='/static/css/vr.css'><!--pythonに頼るPathではないため相対Pathが変わっていることに注意-->
   <script type="text/javascript" src="/static/js/sample.js"></script>
-  <!--<script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>--><!--これ忘れてるぞ-->
+  <!--②
+  <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>--><!--これ忘れてるぞ
+  -->
 
+  <!--①
   <script type="text/javascript">
     location.href="https://youtube.com/embed/URnVNudD_BU?controls=0&playsinline=0&autoplay=1&loop=1&playlist=URnVNudD_BU"
   </script>
+  -->
+
+  <!--③-->
+  <style type="text/css">
+    #vryt{width: 100%;height: 100%;}
+  </style>
 </head>
 <body>
   <h1>あなたにおすすめの運動</h1>
   <div class="VideoWrap">
+      <!--③-->
       <iframe id="vryt" src="https://youtube.com/embed/URnVNudD_BU?controls=0&playsinline=0&autoplay=1&loop=1&playlist=URnVNudD_BU" importance="high"></iframe>
   
-  <!--<a-scene>
+  <!--②
+  <a-scene>
     <a-assets>
-      
-      
       <video class="BackVideo" id="video" autoplay loop="true" muted>
         <source type="video/mp4" src="/static/video/sample.mp4">
       </video>
       
     </a-assets>
-    <a-videosphere src="#video"></a-videosphere>-->
+    <a-videosphere src="#video"></a-videosphere>
+  </a-scene>
+  -->
   </div>
 </body>
 </html>
