@@ -48,7 +48,7 @@ class DBProcess():
         (currentID,) = result
         return currentID
     
-    def dbInsert(self, record):
+    def dbInsert(self):#, record
         '''
         [入力]
         ●record
