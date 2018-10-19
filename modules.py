@@ -109,7 +109,7 @@ class BasicProcess():
         return calories
 
     def getDayConsumedCalorie(self, DB_data):
-        caloriePerDay = []
+        caloriePerDay = {}
         sum = 0
     
         for num in range(len(DB_data)-2):
@@ -117,7 +117,7 @@ class BasicProcess():
             if day == DB_data[num+1]["datetime"].day:
                 sum += DB_data[num+1]["calorie"]
             else:
-                caloriePerDay.append(sum)
+                caloriePerDay[day] = sum
                 sum = 0
             
         return caloriePerDay
