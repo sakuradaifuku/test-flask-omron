@@ -58,7 +58,7 @@ class DBProcess():
 
         conn = self.getDBConn()
         cursor = conn.cursor()        
-        sql = "insert into {0}({1}) values({2})".format(self.tableName, str_attrs, str_datas)
+        sql = "insert into {0}({1}) values({2})".format(self.tableName, attrs, datas)
         cursor.execute(sql)
     
     def dbSelect(self, attr):
