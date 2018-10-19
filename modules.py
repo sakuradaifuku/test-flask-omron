@@ -49,22 +49,12 @@ class DBProcess():
         datas = record.values()
         str_datas = ""
         for i in range(len(keys)):
-            #if keys[i]!="datetime":
             if i==len(keys)-1:
                 str_attrs += str(keys[i])
                 str_datas += str(datas[i])
             else:
                 str_attrs += str(keys[i]) + ","
                 str_datas += str(datas[i]) + ","
-            """
-            else:
-                if i==len(keys)-1:
-                    str_attrs += str(keys[i])
-                    str_datas += datas[i]
-                else:
-                    str_attrs += str(keys[i]) + ","
-                    str_datas += datas[i]) + ","
-            """
 
         conn = self.getDBConn()
         cursor = conn.cursor()        
