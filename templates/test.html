@@ -11,7 +11,11 @@
         <p>{{ message }}</p>
         {% endif %}
         {% for psqldata in psqldatas %}
-        <p>{{ psqldata["id"] }}:{{ psqldata["calorie"] }}:{{ psqldata["datetime"] }}</p>
+        <p>●{{ psqldata["id"] }}</p>
+        <blockquote>
+            <p>・{{ psqldata["calorie"] }}</p>
+            <p>・{{ psqldata["datetime"] }}</p>
+        </blockquote>
         {% endfor %}
         <ul>
             <li><a href="/front_test">front_test</a></li>
