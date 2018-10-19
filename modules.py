@@ -74,6 +74,8 @@ class DBProcess():
         #sql = "insert into {0}(id,user_id,calorie,datetime) values({1},'a001',400,now())".format(self.tableName, id)
         sql = "insert into {0}(id,{1},datetime) values({2},{3},now())".format(self.tableName, attrs, id, datas)
         cursor.execute(sql)
+        conn.commit()
+        self.closeConn(cursor, conn)
     
     def dbSelect(self, attr):
         '''
