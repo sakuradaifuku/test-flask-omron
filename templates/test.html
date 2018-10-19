@@ -12,6 +12,7 @@
         {% endif %}
         {% for psqldata in psqldatas %}
         <p>{{ psqldata }}</p>
+        <p>{{ psqldata["id"] }}:{{ psqldata["datetime"] }}</p>
         {% endfor %}
         <ul>
             <li><a href="/front_test">front_test</a></li>
