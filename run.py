@@ -23,7 +23,7 @@ def vr():
 
 @app.route("/test_postgresql")
 def hello_postgresql():
-    dp.dbInsert() #{"user_id":"a001", "calorie":300}
+    dp.dbInsert({"user_id":"a001", "calorie":300})
     result = dp.dbSelect("*")
     return render_template("test.html", psqldatas = result)
 
