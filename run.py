@@ -25,7 +25,8 @@ def vr():
 def hello_postgresql():
     _calories = bp.getDBCalorie()
     calories = bp.shapeCalorieData(_calories)
-    return render_template("test.html", psqldatas = calories)
+    calorieperday = bp.getDayConsumedCalorie(calories)
+    return render_template("test.html", psqldatas = calories, calorieperday = calorieperday)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-import os
+import os, datetime
 import psycopg2
 
 class SensorProcess():
@@ -108,3 +108,16 @@ class BasicProcess():
         
         return calories
 
+    def getDayConsumedCalorie(self, DB_data):
+        caloriePerDay = []
+        sum = 0
+    
+        for num in range(len(DB_data)-2):
+            day  =  DB_data[num]["datetime"].day
+            if day == DB_data[num+1]["datetime"].day:
+                sum += DB_data[num+1]["calorie"]
+            else:
+                caloriePerDay.append(sum)
+                sum = 0
+            
+        return caloriePerDay
