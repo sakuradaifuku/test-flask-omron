@@ -44,14 +44,17 @@ class DBProcess():
         cursor.execute(sql)
         result = cursor.fetchone()
         self.closeConn(cursor, conn)
-        return result
+
+        (currentID,) = result
+        return currentID
     
     def dbInsert(self, record):
         '''
         [入力]
         ●record
         ・(dict){"attr1":data1, "attr2":data2,...}
-        ・シリアルプライマリーキーであるidだけは追記しないように！
+        ・シリアルプライマリーキーであるidとdatetimeは引数にしない！
+        ・idはgetMaxID()から，datetimeはSQLのnow()から取得する．
         '''
         '''
         attrs = ""
@@ -68,9 +71,8 @@ class DBProcess():
         '''
         conn = self.getDBConn()
         cursor = conn.cursor()
-        (currentID,) = self.getMaxID()
-        id = str(currentID+1)
-        sql = "insert into {0}(id,user_id,calorie,datetime) values({1},'a001',400,{2})".format(self.tableName, id, str(record))
+        id = str(self.getMaxID()+1)
+        sql = "insert into {0}(id,user_id,calorie,datetime) values({1},'a001',400,now())".format(self.tableName, id)
         #sql = "insert into {0}(id,{1}) values({2},{3})".format(self.tableName, attrs, id, datas)
         cursor.execute(sql)
     
