@@ -1,4 +1,5 @@
 from flask import Flask,render_template
+import datetime
 
 from modules import DBProcess
 from modules import BasicProcess
@@ -23,6 +24,7 @@ def vr():
 
 @app.route("/test_postgresql")
 def hello_postgresql():
+    dp.dbInsert({"user_id":"a001", "calorie":300, "datetime":datetime.datetime.now()})
     result = dp.dbSelect("*")
     return render_template("test.html", psqldatas = result)
 
