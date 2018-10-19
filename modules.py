@@ -4,12 +4,7 @@ import psycopg2
 class SensorProcess():
     def __init__(self):pass
     def insertSensorData(self):
-        dp = DBProcess()
-        conn = dp.getDBConn()
-        cursor = conn.cursor()
-        #cursor.execute("insert ")
-        #conn.commit()
-        dp.closeConn(cursor, conn)
+        pass
 
 '''
 http://h2shiki.hateblo.jp/entry/2016/05/05/210738
