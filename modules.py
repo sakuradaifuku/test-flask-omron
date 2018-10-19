@@ -112,10 +112,10 @@ class BasicProcess():
             if day == DB_data[num+1]["datetime"].day:
                 sum += DB_data[num+1]["calorie"]
             else:
-                if sum == 0:
-                    caloriePerDay[day] = DB_data[num]["calorie"]
+                if sum == 0: # 1回分しか記録されていない1日データがあった場合
+                    caloriePerDay[str(day)] = DB_data[num]["calorie"]
                 else:
-                    caloriePerDay[day] = sum
+                    caloriePerDay[str(day)] = sum
                     sum = 0
             
         return caloriePerDay
