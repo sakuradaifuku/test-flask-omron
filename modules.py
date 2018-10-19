@@ -33,19 +33,13 @@ class DBProcess():
             password = self.DB_PASSWORD
         )
     
-    def closeConn(self, cursor, conn):
-        cursor.close()
-        conn.close()
-    
     def getMaxID(self):
-        conn = self.getDBConn()
-        cursor = conn.cursor()
-        sql = "select max(id) from {0}".format(self.tableName)
-        cursor.execute(sql)
-        result = cursor.fetchone()
-        self.closeConn(cursor, conn)
-
-        (currentID,) = result
+        with self.getDBConn() as conn:
+            with conn.cursor() as cursor:
+                sql = "select max(id) from {0}".format(self.tableName)
+                cursor.execute(sql)
+                result = cursor.fetchone()
+                (currentID,) = result
         return currentID
     
     def dbInsert(self, record):
@@ -68,14 +62,12 @@ class DBProcess():
                 attrs += str(attr)
                 datas += "{0}".format(str(data)) if attr!="user_id" else "'{0}'".format(data)
 
-        conn = self.getDBConn()
-        cursor = conn.cursor()
-        id = str(self.getMaxID()+1)
-        #sql = "insert into {0}(id,user_id,calorie,datetime) values({1},'a001',400,now())".format(self.tableName, id)
-        sql = "insert into {0}(id,{1},datetime) values({2},{3},now())".format(self.tableName, attrs, id, datas)
-        cursor.execute(sql)
-        conn.commit()
-        self.closeConn(cursor, conn)
+        with self.getDBConn() as conn:
+            with conn.cursor() as cursor:
+                id = str(self.getMaxID()+1)
+                sql = "insert into {0}(id,{1},datetime) values({2},{3},now())".format(self.tableName, attrs, id, datas)
+                cursor.execute(sql)
+                conn.commit()
     
     def dbSelect(self, attr):
         '''
@@ -84,12 +76,11 @@ class DBProcess():
         ・(str)"項目1,項目2,..."
         ・すべての項目を取得する場合は"*"のみ．
         '''
-        conn = self.getDBConn()
-        cursor = conn.cursor()
-        sql = "select {0} from {1} order by id asc".format(attr, self.tableName)
-        cursor.execute(sql)
-        result = cursor.fetchall()
-        self.closeConn(cursor, conn)
+        with self.getDBConn() as conn:
+            with conn.cursor() as cursor:
+                sql = "select {0} from {1} order by id asc".format(attr, self.tableName)
+                cursor.execute(sql)
+                result = cursor.fetchall()
         return result
 
 class BasicProcess():
