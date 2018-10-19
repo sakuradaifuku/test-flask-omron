@@ -44,18 +44,17 @@ class DBProcess():
         ・(dict){"attr1":data1, "attr2":data2,...}
         ・シリアルプライマリーキーであるidだけは追記しないように！
         '''
-        attrs = record.keys()
-        str_attrs = ""
-        datas = record.values()
-        str_datas = ""
-        print("{0}\n{1}\n".format(attrs,datas))
-        for i in range(len(attrs)):
-            if i==len(attrs)-1:
-                str_attrs += str(attrs[i])
-                str_datas += str(datas[i])
+        attrs = ""
+        datas = ""
+        i = 0
+        for attr,data in record.items():
+            if i<len(record)-1:
+                attrs += str(attr) + ","
+                datas += str(data) + ","
+                i += 1
             else:
-                str_attrs += str(attrs[i]) + ","
-                str_datas += str(datas[i]) + ","
+                attrs += str(attr)
+                datas += str(data)
 
         conn = self.getDBConn()
         cursor = conn.cursor()        
