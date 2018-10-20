@@ -85,6 +85,7 @@ class BasicProcess():
     def __init__(self):
         self.dp = DBProcess()
         #self.sp = SensorProcess()
+        self.minDayCalorie = 2000
     
     def getDBCalorie(self):
         calorie = self.dp.dbSelect("id,calorie,datetime")
