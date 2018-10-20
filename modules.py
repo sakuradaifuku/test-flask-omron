@@ -113,12 +113,12 @@ class BasicProcess():
             sum += DB_data[num]["calorie"] # カロリーを加算
             if currentDay != nextDay: # 日が違った場合
                 caloriePerDay[currentDay] = sum # currentDayの1日カロリーをリストに格納
-                if num+1 == len(DB_data): # 日付が異なりつつ，最後のデータに到達していた場合
+                if num+1 == len(DB_data)-1: # 日付が異なりつつ，最後のデータに到達していた場合
                     caloriePerDay[nextDay] = DB_data[num+1]["calorie"]
                     break
                 sum = 0
 
-            if num+1 == len(DB_data): # 日付が一致しつつ，最後のデータに到達していた場合
+            if num+1 == len(DB_data)-1: # 日付が一致しつつ，最後のデータに到達していた場合
                 sum += DB_data[num+1]["calorie"]
                 caloriePerDay[currentDay] = sum
             
