@@ -105,6 +105,14 @@ class BasicProcess():
         return calories
 
     def getDayConsumedCalorie(self, DB_data):
+        '''
+        [引数]
+        ●(list(dict))[{"id": data1_1, "calorie":data1_2, "datetime":data1_3},{"id": data2_1, ...},...]
+        ・DBから取得した日分けされていない全データ
+        [戻り値]
+        ●(list)[day1, day2, ...]
+        ・日ごとのカロリー総和を求めたリスト
+        '''
         caloriePerDay = {}
         sum = 0
     
