@@ -107,7 +107,7 @@ class BasicProcess():
         caloriePerDay = {}
         sum = 0
     
-        for num in range(len(DB_data)-1):
+        for num in range(len(DB_data)):
             day  =  DB_data[num]["datetime"].day
             if day == DB_data[num+1]["datetime"].day:
                 sum += DB_data[num+1]["calorie"]
