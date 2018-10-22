@@ -91,6 +91,24 @@
       yt_screen_ratio()
     })
   </script>
+  <style type="text/css">
+    /*⑤*/
+    #video-background, #video-overlay{
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+    }
+    #video-background{
+        z-index: -2;
+    }
+    #video-background{
+        z-index: -1;
+    }
+  </style>
 
 
   <link rel='stylesheet' href='/static/css/vr.css'><!--pythonに頼るPathではないため相対Pathが変わっていることに注意-->
