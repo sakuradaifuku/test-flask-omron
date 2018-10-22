@@ -21,7 +21,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 // YouTubeの埋め込み
 var player;
 function onYouTubePlayerAPIReady() {
-    player = new YT.Player('sample', {
+    player = new YT.Player('video-background', {
             playerVars: {
                 videoID: "URnVNudD_BU",
                 controls: 0,
@@ -58,7 +58,7 @@ function resizeMovie () {
         mw = Math.round(bw * (mh/bh)); //高さに合わせて横幅変更
     }
 
-    $('#sample').css({
+    $('#video-background').css({
             width: mw,
             height: mh,
             marginTop: (h - mh)/2,
