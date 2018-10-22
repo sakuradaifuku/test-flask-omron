@@ -12,64 +12,89 @@
   -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script type="text/javascript">
-    // IFrame Player API の読み込み
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var tag = document.createElement("script")
+    tag.src = "https://www.youtube.com/iframe_api"
+    var firstScriptTag = document.getElementsByTagName("script")[0]
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 
-// YouTubeの埋め込み
-var player;
-function onYouTubePlayerAPIReady() {
-    player = new YT.Player('video-background', {
-            playerVars: {
-                videoID: "URnVNudD_BU",
-                controls: 0,
-                autoplay: 1,
-                loop: 1,
-                modestbranding: 1,
-                showinfo: 0,
-                wmode: 'transparent'
-            },
-            events: {
-                onReady: onPlayerReady,
-                onStateChange: onPlayerStateChange
-            }
-    });
-}
+    var ytArea = "video-background"
+    var ytID = "URnVNudD_BU"
+    var ytPlayer
 
-function onPlayerReady(event) {
-    event.target.playVideo();
-    event.target.mute(); // 音声ミュート
-}
-
-// ブラウザサイズにあわせて全画面表示
-function resizeMovie () {
-    var $w = $(window),
-    bw = 1200, //基準にする横幅
-    bh = (bw/16) * 9, //基準にする高さ(16:9)
-    w = $w.width(), //表示サイズ(幅)
-    h = $w.height(), //表示サイズ(高さ)
-    mw = w, //動画サイズ(幅)
-    mh =  Math.round(bh * (mw/bw)); //動画サイズ(高さ)
-
-    if ( mh < h ) { //動画の高さが表示サイズの高さより小さかったら
-        mh = h; //表示サイズの高さに変更
-        mw = Math.round(bw * (mh/bh)); //高さに合わせて横幅変更
+    function onYouTubeIframeAPIReady(){
+      ytPlayer = new YT.Player(ytArea, {
+        videoID: ytID,
+        playerVars: {
+          rel: 0,
+          controls: 0,
+          loop: 1,
+          autoplay: 1,
+          showinfo: 0,
+          modestbranding: 0,
+          iv_load_policy:3,
+          wmode: "transparent"
+        },
+        events: {
+          "onReady": onPlayerReady,
+          "onStateChange": onPlayerStateChange
+        }
+      })
     }
 
-    $('#video-background').css({
-            width: mw,
-            height: mh,
-            marginTop: (h - mh)/2,
-            marginLeft: (w - mw)/2
-    });
+    function onPlayerReady(e){
+      ytPlayer.playVideo()
+      ytPlayer.mute()
+      ytPlayer.setPlaybackQuality("default")
+    }
 
-}
+    function onPlayerStateChange(e){
+      var ytStatus = e.target.getPlayerState()
+      if(ytStatus == YT.PlayerState.PLAYING){}
+      if(ytStatus == YT.PlayerState.ENDED){
+        ytPlayer.playVideo()
+        ytPlayer.mute()
+      }
+    }
 
-resizeMovie();
+    var WIN = $(window)
+    var WIN_H
+    var WIN_W
 
-$(window).resize(resizeMovie);
+    function yt_screen_ratio(){
+      WIN_H = WIN.height()
+      WIN_W = WIN.width()
+      var screen_switch = 0.5625
+      var screen_ratio = WIN_H/WIN_W
+      var ratio_H = WIN_H/screen_switch
+      var ratio_W = WIN_W*screen_switch
+
+      if(screen_ratio>screen_switch){
+        $("#video-background").css({
+          "heigth":"100%",
+          "width":ratio_H,
+          "margin-top":"0",
+          "margin-left":-ratio_H/2,
+          "left":"50%",
+          "top":"0"
+        })
+      }else{
+        $("#video-background").css({
+          "width":"100%",
+          "height":ratio_W,
+          "margin-top":-ratio_W/2,
+          "margin-left":"0",
+          "top":"50%",
+          "left":"0"
+        })
+      }
+    }
+
+    WIN.resize(function(){
+      yt_screen_ratio()
+    })
+    $(function(){
+      yt_screen_ratio()
+    })
   </script>
   <style type="text/css">
     /*⑤*/
