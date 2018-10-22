@@ -59,9 +59,9 @@
       WIN_H = WIN.height()
       WIN_W = WIN.width()
       var screen_switch = 0.5625
-      var screem_ratio = WIN_H/WIN_W
+      var screen_ratio = WIN_H/WIN_W
       var ratio_H = WIN_H/screen_switch
-      var ratio_W = WIN_W/screem_switch
+      var ratio_W = WIN_W*screen_switch
 
       if(screen_ratio>screen_switch){
         $("#video-background").css({
