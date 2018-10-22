@@ -1,4 +1,4 @@
-.videoWrap{
+/*.videoWrap{
     position: fixed;
     top: 0px;
     left: 0px;
@@ -15,5 +15,23 @@
     min-height: 100vh;
     min-width: 100%;
     min-width: 100vw;
+    z-index: -1;
+}*/
+
+
+/*⑤*/
+#video-background, #video-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}
+#video-background{
+    z-index: -2;
+}
+#video-background{
     z-index: -1;
 }
