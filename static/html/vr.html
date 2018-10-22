@@ -15,10 +15,11 @@
 
     var ytArea = "video-background"
     var ytID = "URnVNudD_BU"
+    var ytPlayer
 
     function onYouTubeIframeAPIReady(){
       ytPlayer = new YT.Player(ytArea, {
-        videoID: "URnVNudD_BU",
+        videoID: ytID,
         playerVars: {
           rel: 0,
           controls: 0,
