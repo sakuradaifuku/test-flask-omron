@@ -32,14 +32,14 @@ function onYouTubePlayerAPIReady() {
                 wmode: 'transparent'
             },
             events: {
-                onReady: onPlayerReady
-                //onStateChange: onPlayerStateChange
+                onReady: onPlayerReady,
+                onStateChange: onPlayerStateChange
             }
     });
 }
 
 function onPlayerReady(event) {
-    //event.target.playVideo();
+    event.target.playVideo();
     event.target.mute(); // 音声ミュート
 }
 
