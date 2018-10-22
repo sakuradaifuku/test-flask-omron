@@ -7,8 +7,34 @@
     </head>
     <body>
         <p>こんにちは</p>
+        {% if message %}
         <p>{{ message }}</p>
+        {% endif %}
+
+        {% if psqldatas %}
+        <h3>DBから取得した全消費カロリーデータ</h3>
+        {% for psqldata in psqldatas %}
+        <p>●{{ psqldata["id"] }}</p>
+        <blockquote>
+            <p>・{{ psqldata["calorie"] }}</p>
+            <p>・{{ psqldata["datetime"] }}</p>
+        </blockquote>
+        {% endfor %}
+        {% endif %}
+
+        <hr>
+
+        {% if calorieperday %}
+        <h3>1日毎の消費カロリー量</h3>
+        {{ calorieperday }}
+        {% for day,calorie in calorieperday.items() %}
+        <p>●{{ day }}日 : {{ calorie }}[Kcal?]</p>
+        {% endfor %}
+        {% endif %}
+
+        <hr>
         <ul>
+            <li><a href="/">top</a></li>
             <li><a href="/front_test">front_test</a></li>
             <li><a href="/test_postgresql">postgresql_test</a></li>
         </ul>
