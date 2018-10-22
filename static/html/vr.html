@@ -5,7 +5,11 @@
   <meta charset="UTF-8">
   <title>ながら測定器</title>
 
-  <!--⑤YouTubeAPI-->
+  <!--⑤YouTubeAPI
+  https://techmemo.biz/javascript/youtube-video-background/
+  http://note.sorakakeru.info/?youtube-iframe-api
+  https://developers.google.com/youtube/iframe_api_reference?hl=ja
+  -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script type="text/javascript">
     var tag = document.createElement("script")
@@ -15,10 +19,10 @@
 
     var ytArea = "video-background"
     var ytID = "URnVNudD_BU"
-    var ytPlayer
+    //var ytPlayer
 
     function onYouTubeIframeAPIReady(){
-      ytPlayer = new YT.Player(ytArea, {
+      var ytPlayer = new YT.Player(ytArea, {
         videoID: ytID,
         playerVars: {
           rel: 0,
