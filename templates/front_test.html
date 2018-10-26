@@ -23,7 +23,6 @@
             times.push(k)
             tCalories.push(caloriePerFift[k])
           }
-          alert(tCalories)
 
           var ctx = document.getElementById("ChartDemo").getContext('2d');
           var ChartDemo = new Chart(ctx, {
@@ -46,7 +45,7 @@
                   ticks: {
                     beginAtZero: true,
                     min: 0,
-                    max:55
+                    max:500
                   }
                 }
               ]
@@ -60,18 +59,26 @@
 
         <canvas id="ChartDemo2" width='1231' height='150'></canvas>
         <script>
+          // Pythonからのデータを受け取る
           var caloriePerDay = {{ calorieperday|tojson }}
+          // データをグラフ用に整形
+          var dates = []
+          var dCalories = []
+          for(k in caloriePerDay){
+            dates.push(k)
+            dCalories.push(caloriePerDay[k])
+          }
+
           var ctx = document.getElementById("ChartDemo2").getContext('2d');
           var ChartDemo2 = new Chart(ctx, {
            type: 'line',
            data: {
-             labels: ["11月01日", "11月02日", "11月03日", "11月04日", "11月05日", "11月06日", "11月07日","11月08日", "11月09日", "11月10日", "11月11日", "11月12日","11月13日", "11月14日", "11月15日", "11月16日", "11月17日", "11月18日", "11月19日", "11月20日",
-            "11月21日", "11月22日", "11月23日", "11月24日", "11月25日", "11月26日", "11月27日", "11月28日", "11月29日", "11月30日", "11月31日"],
+             labels: dates,
               datasets: [
               {
                  label: "消費カロリー",
                  borderColor: 'rgb(255, 0, 0)',
-                 data: [320, 326, 345, 300, 350, 330, 350, 380, 320, 330, 370, 390, 330, 350, 270, 290, 300, 380, 310, 320, 387, 389, 376, 320, 210, 270, 208, 390, 400, 420, 380],
+                 data: dCalories,
               },
 
               {
@@ -79,7 +86,7 @@
                 lineTension: 0,
                 fill: false,
                 borderColor: 'rgb(0, 0, 255)',
-                data: [350,350,350,350,350,350,350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350],
+                data: (new Array(dates.length)).fill(2000),
                 borderDash:[5,5],
               }
               ]
