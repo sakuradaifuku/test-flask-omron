@@ -11,7 +11,7 @@
 <body>
   <div class="main">
     <div class="contents">
-        <canvas id="FiftChart" width='100%' height='200'></canvas>
+        <canvas id="FiftChart" width='100%' height='200px'></canvas>
         <script>
           // Pythonからのデータを受け取る
           var caloriePerFift = {{ calorieperfift|tojson }}
@@ -44,7 +44,7 @@
           FiftChart.render();
         </script>
 
-        <canvas id="DayChart" width='100%' height='200'></canvas>
+        <canvas id="DayChart" width='100%' height='200px'></canvas>
         <script>
           // Pythonからのデータを受け取る
           var caloriePerDay = {{ calorieperday|tojson }}
