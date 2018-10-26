@@ -65,12 +65,15 @@ a{
 .campaign {
   width: 100%;
   height: 20%;
-  margin:0 auto;
+  margin:-5px 0 0 0;
   background: #ff8800;
   color: #333;
   text-align: center;
 }
 .campaign:hover {
   background: #fbd657;
+}
+.campaign p{
+  margin: 0 auto;
 }
 
