@@ -11,9 +11,9 @@
 <body>
   <div class="main">
     <div class="contents">
-        <canvas id="ChartDemo" width='1231' height='150'></canvas>
+        <canvas id="FiftChart" width='1231' height='150'></canvas>
         <script>
-        window.onload = function() {
+        //window.onload = function() {
           // Pythonからのデータを受け取る
           var caloriePerFift = {{ calorieperfift|tojson }}
           // データをグラフ用に整形
@@ -24,8 +24,8 @@
             tCalories.push(caloriePerFift[k])
           }
 
-          var ctx = document.getElementById("ChartDemo").getContext('2d');
-          var ChartDemo = new Chart(ctx, {
+          var ctx = document.getElementById("FiftChart").getContext('2d');
+          var FiftChart = new Chart(ctx, {
           type: 'line',
           data: {
             labels: times,
@@ -38,7 +38,7 @@
             ]
          },
          options: {
-            responsive: true,
+            responsive: true/*,
             scales: {
               yAxes: [
                 {
@@ -49,15 +49,15 @@
                   }
                 }
               ]
-            }
+            }*/
          }
       });
 
-        ChartDemo.render();
-      }
+        FiftChart.render();
+      //}
         </script>
 
-        <canvas id="ChartDemo2" width='1231' height='150'></canvas>
+        <canvas id="DayChart" width='1231' height='150'></canvas>
         <script>
           // Pythonからのデータを受け取る
           var caloriePerDay = {{ calorieperday|tojson }}
@@ -70,8 +70,8 @@
           }
           var maxData = (new Array(dates.length)).fill(4000)
 
-          var ctx = document.getElementById("ChartDemo2").getContext('2d');
-          var ChartDemo2 = new Chart(ctx, {
+          var ctx = document.getElementById("DayChart").getContext('2d');
+          var DayChart = new Chart(ctx, {
            type: 'line',
            data: {
              labels: dates,
@@ -107,6 +107,7 @@
               }*/
            }
         });
+        DayChart.renser()
         </script>
 
         <table width=100%, border="1">
