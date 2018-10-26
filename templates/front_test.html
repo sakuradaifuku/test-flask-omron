@@ -3,10 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>ながら測定器</title>
-  <link rel='stylesheet' href='/static/css/style.css'>
+  <link rel='stylesheet' href='css/style.css'>
+  <script type="text/javascript" src="js/menu.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 </head>
 <body>
+<<<<<<< HEAD
+  <div class="tab">
+    <ul class="tabmenu">
+      <li class="current"><a href="#">メインページ</a></li>
+      <li><a href="./menu.html">運動の種類</a></li>
+    </ul>
+    <div class="contents">
+        <h1>ながら測定器</h1>
+        <canvas id="ChartDemo" width='1231' height='150'></canvas>
+        <script>
+        window.onload = function() {
+          var ctx = document.getElementById("ChartDemo").getContext('2d');
+          var ChartDemo = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ["15", "30", "1:00", "1:00", "1:15", "1:30", "1:45", "2:00", "2:15", "2:30", "2:45", "3:00"],
+            datasets: [
+            {
+               label: "消費カロリー",
+               borderColor: 'rgb(255, 0, 0)',
+               data: [0, 3, 7, 13, 15, 17, 19, 23, 28, 31, 35, 44],
+            },
+=======
   <h1>ながら測定器</h1>
   <canvas id="ChartDemo" width='1231' height='350'></canvas>
   <script>
@@ -21,47 +45,94 @@ var ChartDemo = new Chart(ctx, {
          borderColor: 'rgb(255, 0, 0)',
          data: [20, 26, 45, 100, 150, 230, 250],
       },
+>>>>>>> aa5063413a4df449220b9d8d186e907a582a97fc
 
-      {
-        label: "目標消費カロリー",
-        lineTension: 0,
-        fill: false,
-        borderColor: 'rgb(0, 0, 255)',
-        data: [350,350,350,350,350,350,350],
-        borderDash:[5,5],
-      }
-      ]
-   },
-   options: {
-      responsive: true,
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-              min: 0,
-              max:450
+            {
+              label: "目標消費カロリー",
+              lineTension: 0,
+              fill: false,
+              borderColor: 'rgb(0, 0, 255)',
+              data: [50,50,50,50,50,50,50, 50, 50, 50, 50, 50],
+              borderDash:[5,5],
             }
-          }
-        ]
+            ]
+         },
+         options: {
+            responsive: true,
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                    min: 0,
+                    max:55
+                  }
+                }
+              ]
+            }
+         }
+      });
+
+        ChartDemo.render();
       }
-   }
-});
-  </script>
-  <table width=100%, border="1">
-    <tr>
-      <td><p>目標消費カロリー</p>300kcal</td><td><p>残り消費カロリー</P></td>
-    </tr>
-    <tr>
-      <td><p>現在の消費カロリー</p>100kcal</td><td>200kcal</td>
-    </tr>
-  </table>
+        </script>
 
-  <a href='/static/html/vr.html'><!--pythonに頼るPathではないため相対Pathが変わっていることに注意-->
-    <div class='campaign'>
-      <h1>運動を開始する</h1>
-    </div>
-  </a>
+        <canvas id="ChartDemo2" width='1231' height='150'></canvas>
+        <script>
+          var ctx = document.getElementById("ChartDemo2").getContext('2d');
+          var ChartDemo2 = new Chart(ctx, {
+           type: 'line',
+           data: {
+             labels: ["11月01日", "11月02日", "11月03日", "11月04日", "11月05日", "11月06日", "11月07日","11月08日", "11月09日", "11月10日", "11月11日", "11月12日","11月13日", "11月14日", "11月15日", "11月16日", "11月17日", "11月18日", "11月19日", "11月20日",
+            "11月21日", "11月22日", "11月23日", "11月24日", "11月25日", "11月26日", "11月27日", "11月28日", "11月29日", "11月30日", "11月31日"],
+              datasets: [
+              {
+                 label: "消費カロリー",
+                 borderColor: 'rgb(255, 0, 0)',
+                 data: [320, 326, 345, 300, 350, 330, 350, 380, 320, 330, 370, 390, 330, 350, 270, 290, 300, 380, 310, 320, 387, 389, 376, 320, 210, 270, 208, 390, 400, 420, 380],
+              },
 
-</body>
+              {
+                label: "目標消費カロリー",
+                lineTension: 0,
+                fill: false,
+                borderColor: 'rgb(0, 0, 255)',
+                data: [350,350,350,350,350,350,350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350, 350],
+                borderDash:[5,5],
+              }
+              ]
+           },
+           options: {
+              responsive: true,
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      beginAtZero: true,
+                      min: 0,
+                      max:450
+                    }
+                  }
+                ]
+              }
+           }
+        });
+        </script>
+
+        <table width=100%, border="1">
+          <tr>
+            <td><p>目標消費カロリー</p>50kcal</td><td><p>残り消費カロリー</P></td>
+          </tr>
+          <tr>
+            <td><p>現在の消費カロリー</p>44kcal</td><td>6kcal</td>
+          </tr>
+        </table>
+
+        <a href='vr.html'>
+          <div class='campaign'>
+            <h1>運動を開始する</h1>
+          </div>
+        </a>
+      </div>
+  </body>
 </html>

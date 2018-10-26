@@ -5,21 +5,22 @@
   <meta charset="UTF-8">
   <title>ながら測定器</title>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!--⑤YouTubeAPI
+    コードは1つ目のリンクを参考にしている。
   https://techmemo.biz/javascript/youtube-video-background/
   http://note.sorakakeru.info/?youtube-iframe-api
   https://developers.google.com/youtube/iframe_api_reference?hl=ja
   -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script type="text/javascript">
-    var tag = document.createElement("script")
+  <!--<script type="text/javascript">
+    /*var tag = document.createElement("script")
     tag.src = "https://www.youtube.com/iframe_api"
     var firstScriptTag = document.getElementsByTagName("script")[0]
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 
     var ytArea = "video-background"
     var ytID = "URnVNudD_BU"
-    var ytPlayer
+    var ytPlayer // 無いとおかしく感じたので追記した
 
     function onYouTubeIframeAPIReady(){
       ytPlayer = new YT.Player(ytArea, {
@@ -94,10 +95,10 @@
     })
     $(function(){
       yt_screen_ratio()
-    })
-  </script>
-  <style type="text/css">
-    /*⑤*/
+    })*/
+  </script>-->
+  <!--<style type="text/css">
+    /*⑤
     #video-background, #video-overlay{
         position: fixed;
         top: 0;
@@ -112,14 +113,13 @@
     }
     #video-background{
         z-index: -1;
-    }
-  </style>
+    }*/
+  </style>-->
 
 
   <link rel='stylesheet' href='/static/css/vr.css'><!--pythonに頼るPathではないため相対Pathが変わっていることに注意-->
-  <!--②Aframe
-  <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>--><!--これ忘れてるぞ
-  -->
+  <!--②Aframe-->
+  <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
 
   <!--①YouTubeにリダイレクト
   <script type="text/javascript">
@@ -137,7 +137,7 @@
 </head>
 <body>
   <h1>あなたにおすすめの運動</h1>
-  <!--<div class="VideoWrap">-->
+  <div class="VideoWrap">
     <!--③
     <iframe id="vryt" src="https://youtube.com/embed/URnVNudD_BU?controls=0&playsinline=0&autoplay=1&loop=1&playlist=URnVNudD_BU" importance="high"></iframe>
     -->
@@ -146,22 +146,22 @@
     <iframe width="100%" height="1300px" src="https://www.youtube.com/embed/URnVNudD_BU?controls=0&playsinline=0&autoplay=1&loop=1&playlist=URnVNudD_BU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     -->
   
-    <!--②ダメ
+    <!--②ダメ-->
     <a-scene>
       <a-assets>
         <video class="BackVideo" id="video" autoplay loop="true" muted>
-          <source type="video/mp4" src="/static/video/sample.mp4">
+          <source type="video/mp4" src="/static/video/sample_compressed.mp4">
         </video>
         
       </a-assets>
       <a-videosphere src="#video"></a-videosphere>
     </a-scene>
-    -->
-  <!--</div>-->
+  </div>
 
 
-  <!--⑤-->
+  <!--⑤
   <div id="video-background"></div>
   <div id="video-overlay"></div>
+  -->
 </body>
 </html>
