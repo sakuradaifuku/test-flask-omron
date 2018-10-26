@@ -1,4 +1,9 @@
 @charset "UTF-8";
+.main .contents {
+  padding: 20px;
+  border: 1px solid #959595;
+}
+
 p {
       color: #0033ff;
 }
@@ -28,9 +33,3 @@ a {
   width: 800px;
 }
 
-.main .contents {
-  padding: 20px;
-  border-right: 1px solid #959595;
-  border-bottom: 1px solid #959595;
-  border-left: 1px solid #959595;
-}

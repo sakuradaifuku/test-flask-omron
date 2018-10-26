@@ -15,7 +15,17 @@
         <canvas id="ChartDemo" width='1231' height='150'></canvas>
         <script>
         window.onload = function() {
+          // Pythonからのデータを受け取る
           var caloriePerFift = {{ calorieperfift|tojson }}
+          // データをグラフ用に整形
+          var times = []
+          var tCalories = []
+          for(k in caloriePerFift){
+            times.push(k)
+            tCalories.push[caloriePerFift[k]]
+          }
+          alert(times)
+
           var ctx = document.getElementById("ChartDemo").getContext('2d');
           var ChartDemo = new Chart(ctx, {
           type: 'line',
