@@ -16,6 +16,7 @@
         <canvas id="ChartDemo" width='1231' height='150'></canvas>
         <script>
         window.onload = function() {
+          alert({{calorieperday}})
           var ctx = document.getElementById("ChartDemo").getContext('2d');
           var ChartDemo = new Chart(ctx, {
           type: 'line',
