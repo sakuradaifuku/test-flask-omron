@@ -8,16 +8,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 </head>
 <body>
-  {{calorieperday}}<br>
-  {{calorieperfift}}<br>
   <div class="main">
     <div class="contents">
         <h1>ながら測定器</h1>
         <canvas id="ChartDemo" width='1231' height='150'></canvas>
         <script>
-          var a = {{ calorieperday|tojson }}
-          alert(a["15"])
         window.onload = function() {
+          var caloriePerFift = {{ calorieperfift|tojson }}
+
+
+
           var ctx = document.getElementById("ChartDemo").getContext('2d');
           var ChartDemo = new Chart(ctx, {
           type: 'line',
@@ -62,6 +62,7 @@
 
         <canvas id="ChartDemo2" width='1231' height='150'></canvas>
         <script>
+          var caloriePerDay = {{ calorieperday|tojson }}
           var ctx = document.getElementById("ChartDemo2").getContext('2d');
           var ChartDemo2 = new Chart(ctx, {
            type: 'line',
@@ -106,11 +107,13 @@
           <tr>
             <th><p>本日の消費カロリー</p></th>
             <th><p>残り消費カロリー</p></th>
-            <th><p>運動時間</p></th>
+            <th><p>選択運動強度</p></th>
+            <th><p>所要時間</p></th>
           </tr>
           <tr>
             <td><p>{{currentCalorie}}</p></td>
             <td><p>{{restCalorie}}</p></td>
+            <td><p></p></td>
             <td><p>{{exerciseTime}}</p></td>
           </tr>
         </table>
