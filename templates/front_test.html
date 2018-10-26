@@ -69,7 +69,6 @@
             dCalories.push(caloriePerDay[k])
           }
           var maxData = (new Array(dates.length)).fill(4000)
-          alert(maxData)
 
           var ctx = document.getElementById("ChartDemo2").getContext('2d');
           var ChartDemo2 = new Chart(ctx, {
@@ -94,18 +93,18 @@
               ]
            },
            options: {
-              responsive: true,
+              responsive: true/*,
               scales: {
                 yAxes: [
                   {
                     ticks: {
                       beginAtZero: true,
                       min: 0,
-                      max:450
+                      max:maxData
                     }
                   }
                 ]
-              }
+              }*/
            }
         });
         </script>
