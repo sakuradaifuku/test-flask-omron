@@ -10,14 +10,7 @@
 <body>
   {{calorieperday}}<br>
   {{calorieperfift}}<br>
-  {{currentCalorie}}<br>
-  {{restCalorie}}<br>
-  {{exerciseTime}}<br>
-  <div class="tab">
-    <ul class="tabmenu">
-      <li class="current"><a href="#">メインページ</a></li>
-      <li><a href="./menu.html">運動の種類</a></li>
-    </ul>
+  <div class="main">
     <div class="contents">
         <h1>ながら測定器</h1>
         <canvas id="ChartDemo" width='1231' height='150'></canvas>
@@ -109,10 +102,14 @@
 
         <table width=100%, border="1">
           <tr>
-            <td><p>目標消費カロリー</p>50kcal</td><td><p>残り消費カロリー</P></td>
+            <th><p>本日の消費カロリー</p></th>
+            <th><p>残り消費カロリー</p></th>
+            <th><p>運動時間</p></th>
           </tr>
           <tr>
-            <td><p>現在の消費カロリー</p>44kcal</td><td>6kcal</td>
+            <td><p>{{currentCalorie}}</p></td>
+            <td><p>{{restCalorie}}</p></td>
+            <td><p>{{exerciseTime}}</p></td>
           </tr>
         </table>
 

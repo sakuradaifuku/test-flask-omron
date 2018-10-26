@@ -28,40 +28,7 @@ a {
   width: 800px;
 }
 
-.tabmenu {
-  overflow: hidden;
-  list-style:none;
-  margin: 0;
-  border-bottom: 5px solid #1495b5;
-  padding: 0;
-}
-
-.tabmenu li {
-  float: left;
-  margin: 0 8px 0 0;
-  background: #09dfe1;
-  border-radius: 10px 10px 0 0;
-}
-
-.tabmenu li:hover {
-  background: #cde0e5;
-}
-
-.tabmenu li a {
-  display: block;
-  padding: 5px 30px;
-  text-decoration: none;
-  color: #3e5358;
-}
-
-.tabmenu li.current {
-  background: #1495b5;
-}
-.tabmenu li.current a {
-  color: #ffffff;
-}
-
-.tab .contents {
+.main .contents {
   padding: 20px;
   border-right: 1px solid #959595;
   border-bottom: 1px solid #959595;
