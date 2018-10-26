@@ -8,7 +8,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 </head>
 <body>
-    {{ calorieperday|tojson }}
+  {{ calorieperday }}
   <div class="main">
     <div class="contents">
         <h1>ながら測定器</h1>
@@ -16,9 +16,6 @@
         <script>
         window.onload = function() {
           var caloriePerFift = {{ calorieperfift|tojson }}
-
-
-
           var ctx = document.getElementById("ChartDemo").getContext('2d');
           var ChartDemo = new Chart(ctx, {
           type: 'line',
