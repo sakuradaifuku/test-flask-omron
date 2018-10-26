@@ -25,8 +25,8 @@ def front_test():
     restCalorie = bp.getRestCalorie(calorieperday)
     exerciseRank, movieNum = bp.selectExercise(restCalorie)
     return render_template("front_test.html", 
-                calorieperday = json.dumps(calorieperdayForGraph, ensure_ascii=False), 
-                calorieperfift = json.dumps(calorieperfiftForGraph, ensure_ascii=False),
+                calorieperday = calorieperdayForGraph, 
+                calorieperfift = calorieperfiftForGraph,
                 currentCalorie = currentCalorie,
                 restCalorie = restCalorie,
                 exerciseRank = exerciseRank,
