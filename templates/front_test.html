@@ -16,7 +16,7 @@
         <ul class="tab_area">
           <li class="active">15分間隔</li>
           <li>1日間隔</li>
-        </div>
+        </ul>
         <ul class="panel_area">
           <li class="panel active">
             <canvas id="FiftChart" width='100%' height='25px'></canvas>
@@ -95,29 +95,31 @@
               DayChart.renser()
             </script>
           </li>
-        </div>
+        </ul>
       </div>
 
-      <table class="calorieTable" border="1" width="100%">
-        <tr>
-          <th width=30% style="padding:0; font-size:14px;"><p>本日の消費カロリー</p></th>
-          <th width=30% style="padding:0; font-size:14px;"><p>残り消費カロリー</p></th>
-          <th width=20% style="padding:0; font-size:14px;"><p>運動強度</p></th>
-          <th width=20% style="padding:0; font-size:14px;"><p>所要時間</p></th>
-        </tr>
-        <tr>
-          <td align="center" style="font-size:18px;"><p>{{currentCalorie}} [cal]</p></td>
-          <td align="center" style="font-size:18px;"><p>{{restCalorie}} [cal]</p></td>
-          <td align="center" style="font-size:18px;"><p>{{exerciseRank}}</p></td>
-          <td align="center" style="font-size:18px;"><p>40秒 (固定)</p></td>
-        </tr>
-      </table>
+      <div class="calorieTable">
+        <table border="1" width="100%">
+          <tr>
+            <th width=30% style="padding:0; font-size:14px;"><p>本日の消費カロリー</p></th>
+            <th width=30% style="padding:0; font-size:14px;"><p>残り消費カロリー</p></th>
+            <th width=20% style="padding:0; font-size:14px;"><p>運動強度</p></th>
+            <th width=20% style="padding:0; font-size:14px;"><p>所要時間</p></th>
+          </tr>
+          <tr>
+            <td align="center" style="font-size:18px;"><p>{{currentCalorie}} [cal]</p></td>
+            <td align="center" style="font-size:18px;"><p>{{restCalorie}} [cal]</p></td>
+            <td align="center" style="font-size:18px;"><p>{{exerciseRank}}</p></td>
+            <td align="center" style="font-size:18px;"><p>40秒 (固定)</p></td>
+          </tr>
+        </table>
+      </div>
 
-      <a href="static/html/{{ movieNum }}.html">
-        <div class='campaign'>
+      <div class='campaign'></div>
+        <a href="static/html/{{ movieNum }}.html">
           <h1>運動を開始する</h1>
-        </div>
-      </a>
+        </a>
+      </div>
     </div>
   </div>
 </body>
