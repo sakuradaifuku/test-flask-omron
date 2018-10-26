@@ -61,13 +61,12 @@ a {
 
 .calorieTable{
   width: 100%;
-}
-.calorieTable>th{
   height: 5px;
-  font-size: 10px;
 }
-.calorieTable>td{
-  height: 5px;
+.calorieTable>th p{
+  font-size: 6px;
+}
+.calorieTable>td p{
   font-size: 14px;
 }
 
