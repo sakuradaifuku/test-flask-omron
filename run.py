@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-import json
 
 #from modules import DBProcess
 from modules import BasicProcess
