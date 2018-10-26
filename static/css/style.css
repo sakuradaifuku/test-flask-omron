@@ -20,7 +20,10 @@ a {
 
 }
 .tab_area label{
-
+  background-color: #959595;
+}
+.tab_area label .active{
+  background-color: #ffffff;
 }
 .panel_area{
 
