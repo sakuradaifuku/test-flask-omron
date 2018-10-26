@@ -14,10 +14,10 @@ a {
 
 .tab_wrap{
   width: 100%;
+  height: 200px;
   margin: 5px auto;
 }
 .tab_area{
-
 }
 .tab_area label{
   background-color: #959595;
