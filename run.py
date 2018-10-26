@@ -29,7 +29,7 @@ def front_test():
                 currentCalorie = currentCalorie,
                 restCalorie = restCalorie,
                 exerciseRank = exerciseRank,
-                movielink = movieNum
+                movieNum = movieNum
                 )
 
 @app.route("/test_postgresql")

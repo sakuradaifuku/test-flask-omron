@@ -115,6 +115,7 @@ class BasicProcess():
         ・日ごとのカロリー総和を求めた辞書
         '''
         caloriePerDay = {}
+        date = ""
         sum = 0
     
         for num in range(len(DB_data)-1):
@@ -124,13 +125,15 @@ class BasicProcess():
             if currentDay != nextDay: # 日が違った場合
                 caloriePerDay[currentDay] = sum # currentDayの1日カロリーをリストに格納
                 if num+1 == len(DB_data)-1: # 日付が異なりつつ，最後のデータに到達していた場合
-                    caloriePerDay[nextDay] = DB_data[num+1]["calorie"]
+                    date = "{0}月{1}日".format(DB_data[num+1]["datetime"].month, nextDay)
+                    caloriePerDay[date] = DB_data[num+1]["calorie"]
                     break
                 sum = 0
 
             if num+1 == len(DB_data)-1: # 日付が一致しつつ，最後のデータに到達していた場合
+                date = "{0}月{1}日".format(DB_data[num]["datetime"].month, currentDay)
                 sum += DB_data[num+1]["calorie"]
-                caloriePerDay[currentDay] = sum
+                caloriePerDay[date] = sum
             
         return caloriePerDay, currentDay
 
