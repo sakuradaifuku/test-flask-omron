@@ -12,6 +12,26 @@ a {
   text-decoration: none;
 }
 
+.tab_wrap{
+  width: 100%;
+  margin: 5px auto;
+}
+.tab_area{
+
+}
+.tab_area label{
+
+}
+.panel_area{
+
+}
+.panel{
+  display: none;
+}
+panel_area active{
+  display: block;
+}
+
 .campaign {
   width: 100;
   margin:0 auto;
@@ -20,16 +40,7 @@ a {
   color: #ffffff;
   text-align: center;
 }
-
 .campaign:hover {
   background: #fbd657;
-}
-
-.ChangeElem_Panel{
-  display: none;
-}
-
-.wrapper {
-  width: 800px;
 }
 

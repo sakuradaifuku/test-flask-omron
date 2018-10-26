@@ -5,107 +5,119 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
   <title>ながら測定器</title>
   <link rel='stylesheet' href='static/css/style.css'>
-  <script type="text/javascript" src="static/js/menu.js"></script>
+  <script type="text/javascript" src="static/js/main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 </head>
 <body>
   <div class="main">
     <div class="contents">
-        <canvas id="FiftChart" width='100%' height='200px'></canvas>
-        <script>
-          // Pythonからのデータを受け取る
-          var caloriePerFift = {{ calorieperfift|tojson }}
-          // データをグラフ用に整形
-          var times = []
-          var tCalories = []
-          for(k in caloriePerFift){
-            times.push(k)
-            tCalories.push(caloriePerFift[k])
-          }
-
-          var ctx = document.getElementById("FiftChart").getContext('2d');
-          var FiftChart = new Chart(ctx, {
-              type: 'line',
-              data: {
-                labels: times,
-                datasets: [
-                {
-                  label: "消費カロリー",
-                  borderColor: 'rgb(255, 0, 0)',
-                  data: tCalories,
-                }
-                ]
-            },
-            options: {
-                responsive: true
-            }
-          });
-
-          FiftChart.render();
-        </script>
-
-        <canvas id="DayChart" width='100%' height='200px'></canvas>
-        <script>
-          // Pythonからのデータを受け取る
-          var caloriePerDay = {{ calorieperday|tojson }}
-          // データをグラフ用に整形
-          var dates = []
-          var dCalories = []
-          for(k in caloriePerDay){
-            dates.push(k)
-            dCalories.push(caloriePerDay[k])
-          }
-          var targetData = (new Array(dates.length)).fill(2000)
-
-          var ctx = document.getElementById("DayChart").getContext('2d');
-          var DayChart = new Chart(ctx, {
-              type: 'line',
-              data: {
-                labels: dates,
-                  datasets: [
-                  {
-                    label: "消費カロリー",
-                    borderColor: 'rgb(255, 0, 0)',
-                    data: dCalories,
-                  },
-
-                  {
-                    label: "目標消費カロリー",
-                    lineTension: 0,
-                    fill: false,
-                    borderColor: 'rgb(0, 0, 255)',
-                    data: targetData,
-                    borderDash:[5,5],
-                  }
-                  ]
-              },
-              options: {
-                  responsive: true
+      <div class="tab_wrap">
+        <div class="tab_area">
+          <label class="tab_label" for="tab1">15分間隔</label>
+          <label class="tab_label" for="tab2">1日間隔</label>
+        </div>
+        <div class="panel_area">
+          <div id="tab1" class="panel active">
+            <canvas id="FiftChart" width='100%' height='150px'></canvas>
+            <script>
+              // Pythonからのデータを受け取る
+              var caloriePerFift = {{ calorieperfift|tojson }}
+              // データをグラフ用に整形
+              var times = []
+              var tCalories = []
+              for(k in caloriePerFift){
+                times.push(k)
+                tCalories.push(caloriePerFift[k])
               }
-            });
-          DayChart.renser()
-        </script>
-
-        <table width=100%, border="1">
-          <tr>
-            <th width=35%><p>本日の消費カロリー</p></th>
-            <th width=35%><p>残り消費カロリー</p></th>
-            <th width=10%><p>選択した<br>運動強度</p></th>
-            <th width=20%><p>所要時間</p></th>
-          </tr>
-          <tr>
-            <td align="center"><p>{{currentCalorie}} [cal]</p></td>
-            <td align="center"><p>{{restCalorie}} [cal]</p></td>
-            <td align="center"><p>{{exerciseRank}}</p></td>
-            <td align="center"><p>40秒 (固定)</p></td>
-          </tr>
-        </table>
-
-        <a href="static/html/{{ movieNum }}.html">
-          <div class='campaign'>
-            <h1>運動を開始する</h1>
+    
+              var ctx = document.getElementById("FiftChart").getContext('2d');
+              var FiftChart = new Chart(ctx, {
+                  type: 'line',
+                  data: {
+                    labels: times,
+                    datasets: [
+                    {
+                      label: "消費カロリー",
+                      borderColor: 'rgb(255, 0, 0)',
+                      data: tCalories,
+                    }
+                    ]
+                },
+                options: {
+                    responsive: true
+                }
+              });
+    
+              FiftChart.render();
+            </script>
           </div>
-        </a>
+          <div id="tab2" class="panel">
+            <canvas id="DayChart" width='100%' height='150px'></canvas>
+            <script>
+              // Pythonからのデータを受け取る
+              var caloriePerDay = {{ calorieperday|tojson }}
+              // データをグラフ用に整形
+              var dates = []
+              var dCalories = []
+              for(k in caloriePerDay){
+                dates.push(k)
+                dCalories.push(caloriePerDay[k])
+              }
+              var targetData = (new Array(dates.length)).fill(2000)
+    
+              var ctx = document.getElementById("DayChart").getContext('2d');
+              var DayChart = new Chart(ctx, {
+                  type: 'line',
+                  data: {
+                    labels: dates,
+                      datasets: [
+                      {
+                        label: "消費カロリー",
+                        borderColor: 'rgb(255, 0, 0)',
+                        data: dCalories,
+                      },
+    
+                      {
+                        label: "目標消費カロリー",
+                        lineTension: 0,
+                        fill: false,
+                        borderColor: 'rgb(0, 0, 255)',
+                        data: targetData,
+                        borderDash:[5,5],
+                      }
+                      ]
+                  },
+                  options: {
+                      responsive: true
+                  }
+                });
+              DayChart.renser()
+            </script>
+          </div>
+        </div>
       </div>
-  </body>
+
+      <table width=100%, border="1">
+        <tr>
+          <th width=35%><p>本日の消費カロリー</p></th>
+          <th width=35%><p>残り消費カロリー</p></th>
+          <th width=10%><p>選択した<br>運動強度</p></th>
+          <th width=20%><p>所要時間</p></th>
+        </tr>
+        <tr>
+          <td align="center"><p>{{currentCalorie}} [cal]</p></td>
+          <td align="center"><p>{{restCalorie}} [cal]</p></td>
+          <td align="center"><p>{{exerciseRank}}</p></td>
+          <td align="center"><p>40秒 (固定)</p></td>
+        </tr>
+      </table>
+
+      <a href="static/html/{{ movieNum }}.html">
+        <div class='campaign'>
+          <h1>運動を開始する</h1>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
 </html>
