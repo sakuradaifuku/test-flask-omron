@@ -27,8 +27,8 @@
         {% if calorieperday %}
         <h3>1日毎の消費カロリー量</h3>
         {{ calorieperday }}
-        {% for day,calorie in calorieperday.items() %}
-        <p>●{{ day }}日 : {{ calorie }}[Kcal?]</p>
+        {% for date,calorie in calorieperday.items() %}
+        <p>●{{ date }} : {{ calorie }}[cal?]</p>
         {% endfor %}
         {% endif %}
 
