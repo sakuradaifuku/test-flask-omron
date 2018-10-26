@@ -86,6 +86,7 @@ class BasicProcess():
         self.dp = DBProcess()
         #self.sp = SensorProcess()
         self.minDayCalorie = 2000
+        self.caloriePerExercise = {1:200, 2:400, 3:360, 4:600}
     
     def getDBCalorie(self):
         calorie = self.dp.dbSelect("id,calorie,datetime")
@@ -132,3 +133,69 @@ class BasicProcess():
                 caloriePerDay[currentDay] = sum
             
         return caloriePerDay
+
+    def get15minConsumedCaloire(self, DB_data):
+        '''
+        [引数]
+        ●(list(dict))[{"id": data1_1, "calorie":data1_2, "datetime":data1_3},{"id": data2_1, ...},...]
+        ・DBから取得した全データ
+        [戻り値]
+        ●(dict){"time1":calorie, "time2":calorie, ...}
+        ・15分ごとのカロリー総和を求めた辞書
+        '''
+        caloriePer15min = {}
+        for record in DB_data:
+            time = "{0}:{1}".format(record["datetime"].hour,record["datetime"].minute)
+            caloriePer15min[time] = record["calorie"] # キー：時刻，バリュー：カロリー
+        
+        return caloriePer15min
+
+    def getRestCalorie(self, caloriePerDay):
+        rest = 0
+        '''
+        getKey = list(caloriePerDay.keys())
+        num = len(getKey)
+        rest = self.minDayCalorie - caloriePerDay[getKey[num-1]]
+        '''
+        getValue = list(caloriePerDay.values())
+        rest = self.minDayCalorie - getValue[len(getValue)-1]
+        return rest
+
+    def yogaMovieSelect(self, rest):
+        if rest <= 0:
+            return -1
+        elif rest < 300:
+            return "/static/movie1.html"
+        elif rest < 800:
+            return "/static/movie2.html"
+        else:
+            return "/static/movie3.html"
+
+    def getExerciseTime(self, rest):
+        times = {}
+        if rest > 0:
+            for key,value in self.caloriePerExercise.items():
+                times[key] = rest/value
+        else:
+            for key,value in self.caloriePerExercise.items():
+                times[key] = 0
+        return times
+
+
+    def getGraphDatas(self, data, dataNum):
+        '''
+        ●Python→JSでjsonを使う
+        http://hungrykirby.hatenablog.com/entry/2017/06/13/083455
+        [入力]
+        ●(dict){"key1":data1, "key2":data2, ...}
+        ●(int)dataNum
+        [戻り値]
+        ●(dict){"key1":data1, "key2":data2, ...}
+        ●dataNumの数だけ後ろの辞書を抽出したもの
+        '''
+        newDict = {}
+        startIndex = 0 if (len(data)-dataNum<0) else len(data)-dataNum
+        for i, (k,v) in enumerate(data.items()):
+            if i>=startIndex:
+                newDict[k] = data[k]
+        return newDict

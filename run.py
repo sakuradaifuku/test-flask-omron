@@ -13,13 +13,28 @@ def hello_world():
 
 @app.route("/front_test")
 def front_test():
-    return render_template("front_test.html")
+    dbData = bp.getDBCalorie()
+    calories = bp.shapeCalorieData(dbData)
+    calorieperday = bp.getDayConsumedCalorie(calories)
+    calorieperfift = bp.get15minConsumedCaloire(calories)
 
+    calorieperdayForGraph = bp.getGraphDatas(calorieperday, 15)
+    calorieperfiftForGraph = bp.getGraphDatas(calorieperfift, 15)
+    currentCalorie = calorieperday[len(calorieperday)-1]
+    restCalorie = bp.getRestCalorie(calorieperday)
+    exerciseTime = bp.getExerciseTime(restCalorie)
+    return render_template("front_test.html", 
+                calorieperday = calorieperdayForGraph, 
+                calorieperfift = calorieperfiftForGraph,
+                currentCalorie = currentCalorie,
+                restCalorie = restCalorie,
+                exerciseTime = exerciseTime
+                )
 
 @app.route("/test_postgresql")
 def hello_postgresql():
-    _calories = bp.getDBCalorie()
-    calories = bp.shapeCalorieData(_calories)
+    dbData = bp.getDBCalorie()
+    calories = bp.shapeCalorieData(dbData)
     calorieperday = bp.getDayConsumedCalorie(calories)
     return render_template("test.html", psqldatas = calories, calorieperday = calorieperday)
 
