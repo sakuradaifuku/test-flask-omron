@@ -194,7 +194,7 @@ class BasicProcess():
         ●dataNumの数だけ後ろの辞書を抽出したもの
         '''
         newDict = {}
-        startIndex = 0 if (len(data)-dataNum<0) else len(data)-dataNum-1
+        startIndex = 0 if (len(data)-dataNum<0) else len(data)-dataNum
         for i, (k,v) in enumerate(data.items()):
             if i>=startIndex:
                 newDict[k] = data[k]
