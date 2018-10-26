@@ -114,11 +114,11 @@
             <td><p>{{currentCalorie}} [cal]</p></td>
             <td><p>{{restCalorie}} [cal]</p></td>
             <td><p>{{exerciseRank}}</p></td>
-            <td><p>40秒</p></td>
+            <td><p>40秒 (固定)</p></td>
           </tr>
         </table>
 
-        <a href='static/html/{{movieNum}}.html'>
+        <a href='static/html/{{ url_for(movieNum) }}.html'>
           <div class='campaign'>
             <h1>運動を開始する</h1>
           </div>
