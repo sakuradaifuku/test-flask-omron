@@ -17,7 +17,7 @@
         <canvas id="ChartDemo" width='1231' height='150'></canvas>
         <script>
         window.onload = function() {
-          var caloriePerFift = {{ calorieperfift }}
+          var caloriePerFift = {{ calorieperfift|tojson }}
           var ctx = document.getElementById("ChartDemo").getContext('2d');
           var ChartDemo = new Chart(ctx, {
           type: 'line',
@@ -62,7 +62,7 @@
 
         <canvas id="ChartDemo2" width='1231' height='150'></canvas>
         <script>
-          var caloriePerDay = {{ calorieperday }}
+          var caloriePerDay = {{ calorieperday|tojson }}
           var ctx = document.getElementById("ChartDemo2").getContext('2d');
           var ChartDemo2 = new Chart(ctx, {
            type: 'line',

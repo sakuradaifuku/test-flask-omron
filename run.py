@@ -25,7 +25,7 @@ def front_test():
     restCalorie = bp.getRestCalorie(calorieperday)
     exerciseRank, movieNum = bp.selectExercise(restCalorie)
     return render_template("front_test.html", 
-                calorieperday = calorieperdayForGraph, 
+                calorieperday = calorieperdayForGraph, # リストに日本語含めないように．含める場合は工夫が必要．
                 calorieperfift = calorieperfiftForGraph,
                 currentCalorie = currentCalorie,
                 restCalorie = restCalorie,
