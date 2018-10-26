@@ -11,9 +11,8 @@
 <body>
   <div class="main">
     <div class="contents">
-        <canvas id="FiftChart" width='1231' height='150'></canvas>
+        <canvas id="FiftChart" width='100%' height='200'></canvas>
         <script>
-        //window.onload = function() {
           // Pythonからのデータを受け取る
           var caloriePerFift = {{ calorieperfift|tojson }}
           // データをグラフ用に整形
@@ -26,38 +25,26 @@
 
           var ctx = document.getElementById("FiftChart").getContext('2d');
           var FiftChart = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: times,
-            datasets: [
-            {
-               label: "消費カロリー",
-               borderColor: 'rgb(255, 0, 0)',
-               data: tCalories,
-            }
-            ]
-         },
-         options: {
-            responsive: true/*,
-            scales: {
-              yAxes: [
+              type: 'line',
+              data: {
+                labels: times,
+                datasets: [
                 {
-                  ticks: {
-                    beginAtZero: true,
-                    min: 0,
-                    max:350
-                  }
+                  label: "消費カロリー",
+                  borderColor: 'rgb(255, 0, 0)',
+                  data: tCalories,
                 }
-              ]
-            }*/
-         }
-      });
+                ]
+            },
+            options: {
+                responsive: true
+            }
+          });
 
-        FiftChart.render();
-      //}
+          FiftChart.render();
         </script>
 
-        <canvas id="DayChart" width='1231' height='150'></canvas>
+        <canvas id="DayChart" width='100%' height='200'></canvas>
         <script>
           // Pythonからのデータを受け取る
           var caloriePerDay = {{ calorieperday|tojson }}
@@ -72,42 +59,31 @@
 
           var ctx = document.getElementById("DayChart").getContext('2d');
           var DayChart = new Chart(ctx, {
-           type: 'line',
-           data: {
-             labels: dates,
-              datasets: [
-              {
-                 label: "消費カロリー",
-                 borderColor: 'rgb(255, 0, 0)',
-                 data: dCalories,
-              },
-
-              {
-                label: "目標消費カロリー",
-                lineTension: 0,
-                fill: false,
-                borderColor: 'rgb(0, 0, 255)',
-                data: maxData,
-                borderDash:[5,5],
-              }
-              ]
-           },
-           options: {
-              responsive: true/*,
-              scales: {
-                yAxes: [
+              type: 'line',
+              data: {
+                labels: dates,
+                  datasets: [
                   {
-                    ticks: {
-                      beginAtZero: true,
-                      min: 0,
-                      max:maxData
-                    }
+                    label: "消費カロリー",
+                    borderColor: 'rgb(255, 0, 0)',
+                    data: dCalories,
+                  },
+
+                  {
+                    label: "目標消費カロリー",
+                    lineTension: 0,
+                    fill: false,
+                    borderColor: 'rgb(0, 0, 255)',
+                    data: maxData,
+                    borderDash:[5,5],
                   }
-                ]
-              }*/
-           }
-        });
-        DayChart.renser()
+                  ]
+              },
+              options: {
+                  responsive: true
+              }
+            });
+          DayChart.renser()
         </script>
 
         <table width=100%, border="1">
