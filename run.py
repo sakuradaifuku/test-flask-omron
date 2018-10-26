@@ -22,13 +22,14 @@ def front_test():
     calorieperfiftForGraph = bp.getGraphDatas(calorieperfift, 15)
     currentCalorie = calorieperdayForGraph[currentDay]
     restCalorie = bp.getRestCalorie(calorieperday)
-    exerciseTime = bp.getExerciseTime(restCalorie)
+    exerciseRank, movieNum = bp.selectExercise(restCalorie)
     return render_template("front_test.html", 
                 calorieperday = calorieperdayForGraph, 
                 calorieperfift = calorieperfiftForGraph,
                 currentCalorie = currentCalorie,
                 restCalorie = restCalorie,
-                exerciseTime = exerciseTime
+                exerciseRank = exerciseRank,
+                movielink = movieNum
                 )
 
 @app.route("/test_postgresql")

@@ -111,7 +111,7 @@ class BasicProcess():
         ●(list(dict))[{"id": data1_1, "calorie":data1_2, "datetime":data1_3},{"id": data2_1, ...},...]
         ・DBから取得した日分けされていない全データ
         [戻り値]
-        ●(dict){"day1":calorie1, "day2":calorie2, ...}
+        ●(dict){"X月Y日":calorie1, "X月Z日":calorie2, ...}
         ・日ごとのカロリー総和を求めた辞書
         '''
         caloriePerDay = {}
@@ -140,7 +140,7 @@ class BasicProcess():
         ●(list(dict))[{"id": data1_1, "calorie":data1_2, "datetime":data1_3},{"id": data2_1, ...},...]
         ・DBから取得した全データ
         [戻り値]
-        ●(dict){"time1":calorie, "time2":calorie, ...}
+        ●(dict){"X字Y分":calorie, "X時Z分":calorie, ...}
         ・15分ごとのカロリー総和を求めた辞書
         '''
         caloriePer15min = {}
@@ -161,16 +161,17 @@ class BasicProcess():
         rest = self.minDayCalorie - getValue[len(getValue)-1]
         return rest
 
-    def movieSelect(self, rest):
+    def selectExercise(self, rest):
         if rest <= 0:
             return -1
-        elif rest < 300:
-            return "/static/movie1.html"
-        elif rest < 800:
-            return "/static/movie2.html"
+        elif rest < 200:
+            return "弱", "movie1"
+        elif rest < 500:
+            return "中", "movie2"
         else:
-            return "/static/movie3.html"
+            return "強", "movie3"
 
+    '''
     def getExerciseTime(self, rest):
         times = {}
         if rest > 0:
@@ -180,7 +181,7 @@ class BasicProcess():
             for key,value in self.caloriePerExercise.items():
                 times[key] = 0
         return times
-
+    '''
 
     def getGraphDatas(self, data, dataNum):
         '''
