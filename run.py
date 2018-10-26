@@ -35,7 +35,7 @@ def front_test():
 def hello_postgresql():
     dbData = bp.getDBCalorie()
     calories = bp.shapeCalorieData(dbData)
-    calorieperday = bp.getDayConsumedCalorie(calories)
+    calorieperday, currentDay = bp.getDayConsumedCalorie(calories)
     return render_template("test.html", psqldatas = calories, calorieperday = calorieperday)
 
 
