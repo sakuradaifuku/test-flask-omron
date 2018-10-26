@@ -28,7 +28,7 @@ a {
 .panel{
   display: none;
 }
-panel_area active{
+.panel active{
   display: block;
 }
 
