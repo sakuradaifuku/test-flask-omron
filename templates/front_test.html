@@ -16,7 +16,7 @@
         <canvas id="ChartDemo" width='1231' height='150'></canvas>
         <script>
           var a = {{ calorieperday|tojson }}
-          alert(a)
+          alert(a["15"])
         window.onload = function() {
           var ctx = document.getElementById("ChartDemo").getContext('2d');
           var ChartDemo = new Chart(ctx, {
