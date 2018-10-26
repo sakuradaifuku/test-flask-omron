@@ -69,6 +69,7 @@
             dCalories.push(caloriePerDay[k])
           }
           var maxData = (new Array(dates.length)).fill(4000)
+          alert(maxData)
 
           var ctx = document.getElementById("ChartDemo2").getContext('2d');
           var ChartDemo2 = new Chart(ctx, {
@@ -113,7 +114,7 @@
           <tr>
             <th width=35%><p>本日の消費カロリー</p></th>
             <th width=35%><p>残り消費カロリー</p></th>
-            <th width=10%><p>選択運動強度</p></th>
+            <th width=10%><p>選択した<br>運動強度</p></th>
             <th width=20%><p>所要時間</p></th>
           </tr>
           <tr>
