@@ -45,7 +45,7 @@
                   ticks: {
                     beginAtZero: true,
                     min: 0,
-                    max:500
+                    max:350
                   }
                 }
               ]
@@ -68,6 +68,7 @@
             dates.push(k)
             dCalories.push(caloriePerDay[k])
           }
+          var maxData = (new Array(dates.length)).fill(4000)
 
           var ctx = document.getElementById("ChartDemo2").getContext('2d');
           var ChartDemo2 = new Chart(ctx, {
@@ -86,7 +87,7 @@
                 lineTension: 0,
                 fill: false,
                 borderColor: 'rgb(0, 0, 255)',
-                data: (new Array(dates.length)).fill(2000),
+                data: maxData,
                 borderDash:[5,5],
               }
               ]
