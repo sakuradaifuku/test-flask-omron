@@ -119,6 +119,7 @@ class BasicProcess():
         sum = 0
     
         for num in range(len(DB_data)-1):
+            currentDay  =  DB_data[num]["datetime"].day
             nextDay = DB_data[num+1]["datetime"].day
             sum += DB_data[num]["calorie"] # カロリーを加算
             if currentDay != nextDay: # 日が違った場合
@@ -134,7 +135,7 @@ class BasicProcess():
                 sum += DB_data[num+1]["calorie"]
                 caloriePerDay[date] = sum
             
-        return caloriePerDay, date
+        return caloriePerDay, currentDay
 
     def get15minConsumedCaloire(self, DB_data):
         '''
