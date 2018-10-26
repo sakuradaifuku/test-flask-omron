@@ -15,15 +15,17 @@ def hello_world():
 def front_test():
     dbData = bp.getDBCalorie()
     calories = bp.shapeCalorieData(dbData)
-    calorieperday = bp.getDayConsumedCalorie(calories)
+    calorieperday, currentDay = bp.getDayConsumedCalorie(calories)
     calorieperfift = bp.get15minConsumedCaloire(calories)
 
     calorieperdayForGraph = bp.getGraphDatas(calorieperday, 15)
     calorieperfiftForGraph = bp.getGraphDatas(calorieperfift, 15)
-    currentCalorie = calorieperday[len(calorieperday)-1]
+    currentCalorie = calorieperdayForGraph[currentDay]
     restCalorie = bp.getRestCalorie(calorieperday)
     exerciseTime = bp.getExerciseTime(restCalorie)
     return render_template("front_test.html", 
+                calorieperday = calorieperdayForGraph, 
+                calorieperfift = calorieperfiftForGraph,
                 currentCalorie = currentCalorie,
                 restCalorie = restCalorie,
                 exerciseTime = exerciseTime

@@ -111,8 +111,8 @@ class BasicProcess():
         ●(list(dict))[{"id": data1_1, "calorie":data1_2, "datetime":data1_3},{"id": data2_1, ...},...]
         ・DBから取得した日分けされていない全データ
         [戻り値]
-        ●(list)[day1, day2, ...]
-        ・日ごとのカロリー総和を求めたリスト
+        ●(dict){"day1":calorie1, "day2":calorie2, ...}
+        ・日ごとのカロリー総和を求めた辞書
         '''
         caloriePerDay = {}
         sum = 0
@@ -132,7 +132,7 @@ class BasicProcess():
                 sum += DB_data[num+1]["calorie"]
                 caloriePerDay[currentDay] = sum
             
-        return caloriePerDay
+        return caloriePerDay, currenDay
 
     def get15minConsumedCaloire(self, DB_data):
         '''
