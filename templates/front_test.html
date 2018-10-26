@@ -11,7 +11,6 @@
 <body>
   <div class="main">
     <div class="contents">
-        <h1>ながら測定器</h1>
         <canvas id="ChartDemo" width='1231' height='150'></canvas>
         <script>
         window.onload = function() {
@@ -24,7 +23,7 @@
             times.push(k)
             tCalories.push[caloriePerFift[k]]
           }
-          alert(times)
+          alert(tCalories)
 
           var ctx = document.getElementById("ChartDemo").getContext('2d');
           var ChartDemo = new Chart(ctx, {
@@ -36,15 +35,6 @@
                label: "消費カロリー",
                borderColor: 'rgb(255, 0, 0)',
                data: tCalories,
-            },
-
-            {
-              label: "目標消費カロリー",
-              lineTension: 0,
-              fill: false,
-              borderColor: 'rgb(0, 0, 255)',
-              data: [50,50,50,50,50,50,50, 50, 50, 50, 50, 50],
-              borderDash:[5,5],
             }
             ]
          },
