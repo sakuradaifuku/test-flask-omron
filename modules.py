@@ -132,7 +132,7 @@ class BasicProcess():
                 sum += DB_data[num+1]["calorie"]
                 caloriePerDay[currentDay] = sum
             
-        return caloriePerDay, currenDay
+        return caloriePerDay, currentDay
 
     def get15minConsumedCaloire(self, DB_data):
         '''
