@@ -1,4 +1,5 @@
-from flask import Flask,render_template
+from flask import Flask, render_template
+import json
 
 #from modules import DBProcess
 from modules import BasicProcess
@@ -24,8 +25,8 @@ def front_test():
     restCalorie = bp.getRestCalorie(calorieperday)
     exerciseRank, movieNum = bp.selectExercise(restCalorie)
     return render_template("front_test.html", 
-                calorieperday = calorieperdayForGraph, 
-                calorieperfift = calorieperfiftForGraph,
+                calorieperday = json.dumps(calorieperdayForGraph, ensure_ascii=False), 
+                calorieperfift = json.dumps(calorieperfiftForGraph, ensure_ascii=False),
                 currentCalorie = currentCalorie,
                 restCalorie = restCalorie,
                 exerciseRank = exerciseRank,

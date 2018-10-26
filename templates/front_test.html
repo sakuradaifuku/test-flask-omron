@@ -9,7 +9,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 </head>
 <body>
-  {{ movieNum }}<br>
   {{ calorieperday|tojson }}
   <div class="main">
     <div class="contents">
@@ -118,7 +117,7 @@
           </tr>
         </table>
 
-        <a href='static/html/.html'>
+        <a href="static/html/{{ movieNum }}.html">
           <div class='campaign'>
             <h1>運動を開始する</h1>
           </div>
