@@ -55,7 +55,7 @@
             dates.push(k)
             dCalories.push(caloriePerDay[k])
           }
-          var maxData = (new Array(dates.length)).fill(4000)
+          var targetData = (new Array(dates.length)).fill(2000)
 
           var ctx = document.getElementById("DayChart").getContext('2d');
           var DayChart = new Chart(ctx, {
@@ -74,7 +74,7 @@
                     lineTension: 0,
                     fill: false,
                     borderColor: 'rgb(0, 0, 255)',
-                    data: maxData,
+                    data: targetData,
                     borderDash:[5,5],
                   }
                   ]
