@@ -161,7 +161,7 @@ class BasicProcess():
         rest = self.minDayCalorie - getValue[len(getValue)-1]
         return rest
 
-    def yogaMovieSelect(self, rest):
+    def movieSelect(self, rest):
         if rest <= 0:
             return -1
         elif rest < 300:
@@ -194,7 +194,7 @@ class BasicProcess():
         ●dataNumの数だけ後ろの辞書を抽出したもの
         '''
         newDict = {}
-        startIndex = 0 if (len(data)-dataNum<0) else len(data)-dataNum
+        startIndex = 0 if (len(data)-dataNum<0) else len(data)-dataNum-1
         for i, (k,v) in enumerate(data.items()):
             if i>=startIndex:
                 newDict[k] = data[k]
