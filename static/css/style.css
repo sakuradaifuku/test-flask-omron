@@ -40,9 +40,10 @@ a {
 }
 .panel{
   width: 100%;
+  height: auto;
   display: none;
 }
-.panel active{
+.panel .active{
   display: block;
 }
 
