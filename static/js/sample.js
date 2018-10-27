@@ -1,6 +1,6 @@
 //ムービー全画面スクリプト（PC用）
 //(1)動画の画角比率を設定します。4:3の場合はここを「4/3」に変更
-var movieRatio = 16/9;  
+var movieRatio = 4/3;  
 //(2)画像のリサイズ関数「movieAdjust()」を作成
 function movieAdjust(){
         var adjustWidth = $(window).width();
