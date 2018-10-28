@@ -83,7 +83,7 @@ a{
   border-bottom: solid 4px #884d0a;
   border-radius: 3px;
 }
-.campaign a:active {
+.campaign a:active, .modal_window a:active {
   -ms-transform: translateY(4px);
   -webkit-transform: translateY(4px);
   transform: translateY(4px);
@@ -113,7 +113,7 @@ a{
   z-index: 1;
 }
 
-.modal_a_paren{
+.modal_a_parent{
   width: 100%;
   text-align: center;
 }
