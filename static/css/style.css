@@ -97,9 +97,10 @@ a{
   height: 70%;
   margin: 0;
   padding: 0;
-  background: #ccc;
+  background: #eee;
   position: fixed;
   z-index: 2;
+  border-radius: 20px;
 }
 .modal_bg{
   display: none;
@@ -110,4 +111,9 @@ a{
   top: 0;
   left: 0;
   z-index: 1;
+}
+
+.modal_a_paren{
+  width: 100%;
+  text-align: center;
 }
