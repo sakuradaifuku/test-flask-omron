@@ -7,7 +7,7 @@ $(function(){
     })
 
 
-    $("modal_open").click(function(){
+    $(".modal_open").click(function(){
         // モーダルウィンドウの黒背景のタグ挿入
         $("body").append('<div class="modal_bg"></div>')
         // 画面中央を算出
