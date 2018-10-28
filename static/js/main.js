@@ -49,7 +49,7 @@ $(function(){
         // URIの更新
         var btn = $(".startBtn")
         var href = btn.attr("href")
-        href = href.split("=")[0] + param
+        href = href.split("=")[0] + "=" + param
         btn.attr("href", href)
     })
 
