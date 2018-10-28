@@ -113,6 +113,15 @@ a{
   z-index: 1;
 }
 
+.select_category{
+  width: 80%;
+  margin: 10px auto;
+}
+.select_category label{
+  display: block;
+  margin: 10px auto;
+}
+
 .modal_a_parent{
   width: 100%;
   text-align: center;
