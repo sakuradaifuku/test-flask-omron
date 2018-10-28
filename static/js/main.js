@@ -40,7 +40,10 @@ $(function(){
     })
 
 
-    $()
+    $("input[name=category]:radio").change(function(){
+        var param = $(this).val()
+        alert(param)
+    })
 
 
     $(".startBtn").click(function(){
