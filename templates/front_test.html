@@ -107,16 +107,26 @@
             <th width=20% style="padding:0; font-size:12px;"><p>所要時間</p></th>
           </tr>
           <tr>
-            <td align="center" style="padding:0; font-size:16px;"><p>{{currentCalorie}} [cal]</p></td>
-            <td align="center" style="padding:0; font-size:16px;"><p>{{restCalorie}} [cal]</p></td>
-            <td align="center" style="padding:0; font-size:16px;"><p>{{exerciseRank}}</p></td>
+            <td align="center" style="padding:0; font-size:16px;"><p>{{ currentCalorie }} [cal]</p></td>
+            <td align="center" style="padding:0; font-size:16px;"><p>{{ restCalorie }} [cal]</p></td>
+            <td align="center" style="padding:0; font-size:16px;"><p>{{ exerciseRank }}</p></td>
             <td align="center" style="padding:0; font-size:16px;"><p>40秒 (固定)</p></td>
           </tr>
         </table>
       </div>
 
       <div class='campaign'>
-        <a href="static/html/vr.html">運動を開始する</a>
+        <a class="modal_open">背景を選んで運動を開始する</a>
+      </div>
+    </div>
+    <div class="modal_window">
+      <div>
+        <label><input type="radio" name="category" value="nature">自然</label>
+        <label><input type="radio" name="category" value="city">都市</label>
+        <label><input type="radio" name="category" value="animation">アニメーション</label>
+      </div>
+      <div>
+        <a href="{{ movieNum }}.html?category=">始める</a>
       </div>
     </div>
   </div>
