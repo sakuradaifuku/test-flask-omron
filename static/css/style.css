@@ -117,9 +117,9 @@ a{
   width: 80%;
   margin: 10px auto;
 }
-.select_category label{
-  display: block;
+.select_category li{
   margin: 10px auto;
+  list-style-type: none;
 }
 
 .modal_a_parent{
