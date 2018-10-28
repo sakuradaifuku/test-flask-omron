@@ -43,7 +43,7 @@ $(function(){
     $()
 
 
-    $(".startBtn").click(function{
+    $(".startBtn").click(function(){
         var href = $(this).attr("href")
         // パラメータcategoryのみ前提でその値を取得
         var param = href.split("=")
