@@ -1,7 +1,10 @@
 $(function(){
     $(".tab_area li").click(function(){
+        // パネル部分の取得
         var tabbody = $(".panel_area li")
+        // 選択されたタブのインデックスを取得
         var idx = tablist.index($(this))
+        // タブの遷移処理
         tablist.removeClass("active").eq(idx).addClass("active")
         tabbody.removeClass("active").eq(idx).addClass("active")
     })
@@ -24,7 +27,7 @@ $(function(){
         })
 
 
-        //画面中央を算出する処理
+        // 画面中央を算出する処理
         $(window).resize(modalResize)
         function modalResize(){
             var w = $(window).width()
@@ -41,8 +44,13 @@ $(function(){
 
 
     $("input[name=category]:radio").change(function(){
+        // 選択されたパラメータを取得
         var param = $(this).val()
-        alert(param)
+        // URIの更新
+        var btn = $(".startBtn")
+        var href = btn.attr("href")
+        href = href.split("=")[0] + param
+        btn.attr("href", href)
     })
 
 
