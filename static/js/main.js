@@ -3,9 +3,9 @@ $(function(){
         // パネル部分の取得
         var tabbody = $(".panel_area li")
         // 選択されたタブのインデックスを取得
-        var idx = $(this).index(this)
+        var idx = $(this).index()
         // タブの遷移処理
-        tablist.removeClass("active").eq(idx).addClass("active")
+        $(this).removeClass("active").eq(idx).addClass("active")
         tabbody.removeClass("active").eq(idx).addClass("active")
     })
 
