@@ -21,7 +21,7 @@ class SensorProcess():
     def getDataFromFitbit(self):
         count = 0 # 10000レコード(2000回)のカウントに使う
         # data_from_fitbit = []
-        while count < 2000:
+        while count < 2000: # 2000*2/60 = 66時間分．
             #現在の年月日，時刻
             today = datetime.datetime.now()
             today_before_minutes = today + datetime.timedelta(minutes=-5)
@@ -52,7 +52,8 @@ class SensorProcess():
             #ここでdatetimeに変更
             datetime_time = []
             for i in range(len_dicts_cal_time):
-                datetime_time.append(datetime.datetime(int(today.year), int(today.month), int(today.day), int(str_split_time[i][0]), int(str_split_time[i][1]), int(str_split_time[i][2])))
+                # 「時」について，グリニッジ標準時との時差9時間を加算している．
+                datetime_time.append(datetime.datetime(int(today.year), int(today.month), int(today.day), int(str_split_time[i][0])+9, int(str_split_time[i][1]), int(str_split_time[i][2])))
 
             #calories_listとdatetime_timeから辞書を作成，キー設定
             #辞書のリスト作成
