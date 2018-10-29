@@ -13,7 +13,7 @@ class SensorProcess():
         self.REFRESH_TOKEN = os.environ["REFRESH_TOKEN"]
 
         # ID等の設定
-        self.client = fitbit.Fitbit(self.CLIENT_ID,                                 self.CLIENT_SECRET,
+        self.client = fitbit.Fitbit(self.CLIENT_ID,                                                                self.CLIENT_SECRET,
                             access_token=self.ACCESS_TOKEN,
                             refresh_token=self.REFRESH_TOKEN,
                             )
@@ -112,11 +112,11 @@ class DBProcess():
         for attr,data in record.items():
             if i<len(record)-1:
                 attrs += str(attr) + ","
-                datas += "{0},".format(str(data)) if attr!="user_id" or attr!="datetime" else "'{0}',".format(data)
+                datas += "{0},".format(str(data)) if attr!="user_id" and attr!="datetime" else "'{0}',".format(data)
                 i += 1
             else:
                 attrs += str(attr)
-                datas += "{0}".format(str(data)) if attr!="user_id" or attr!="datetime" else "'{0}'".format(data)
+                datas += "{0}".format(str(data)) if attr!="user_id" and attr!="datetime" else "'{0}'".format(data)
 
         with self.getDBConn() as conn:
             with conn.cursor() as cursor:
