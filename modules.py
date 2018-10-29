@@ -121,7 +121,7 @@ class DBProcess():
 
         with self.getDBConn() as conn:
             with conn.cursor() as cursor:
-                id = str(self.getMaxID()+1)
+                id = str(self.getMaxID()+6) # ここ生データ5に対する調整なので修正必要！！！！！！！！！
                 sql = "insert into {0}(id,{1}) values({2},{3})".format(self.tableName, attrs, id, datas)
                 cursor.execute(sql)
                 conn.commit()
