@@ -1,20 +1,127 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>ながら測定器</title>
-  <link rel='stylesheet' href='css/vr.css'>
-  <script type="text/javascript" src="js/sample.js"></script>
-</head>
-<body>
-  <h1>あなたにおすすめの運動</h1>
-  <div class="VideoWrap">
-    <a-scene embedded>
-    <a-assets>
-      <video id="video" autoplay loop="true" muted playsinline src="../video/sample_compressed.mp4" />
-    </a-assets>
-    <a-videosphere src="#video"></a-videosphere>
-  </a-scene>
-</div>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ながら測定器</title>
+    
+	<script type="text/javascript">
+			
+			//★ユーザー用の設定項目
+			
+			//★動画プレーヤーの横幅と縦幅を設定する（ピクセル数）。
+							
+			//★表示させるYouTube動画の「動画ID」を設定する。
+							var youtubeVideoID = "G9h98vmX2Us";
+							
+			//★リダイレクトさせる移動先のページのURLを設定する。
+							var redirectUrl = "https://www.youtube.com/watch?v=kjOOtnw50AY";
+		
+			//★リダイレクト先のページを新しいウィンドウ（新しいタブ）で開くか、
+			//  同じページ内で開くかを設定する
+							//新しいウィンドウ（新しいタブ）で開く「1」 / 同じページ内で開く「0」
+							var redirectTargetBlank = 0;
+			
+		//**************************************************************************
+	</script>
+    
+    <style type="text/css">
+            html, body {
+                height:100%;
+            }
+            #container {
+                height: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            iframe {
+                width: 100%;
+                height: 100%;
+                autoplay: 1;
+                rel: 0;
+                border:1px solid #CCC;
+            }
+     </style>
+  </head>
+  <body>
+    <!-- この<div>タグは、下記のJavaScriptの働きによって、ページが表示される前に自動的に<iframe>タグ（動画プレーヤー）に置き換えられます。 -->
+<div id="iframe_player_api"></div>
+	
+	
+	<script type="text/javascript">
+		// YouTubeのウェブサイト上にある「IFrameプレーヤーAPI」のコードを
+		// 非同期的に読み込む。
+		var tag = document.createElement('script');
+		tag.src = "https://www.youtube.com/iframe_api";
+		var iframePlayerApiScriptTag = document.getElementsByTagName('script')[0];
+		iframePlayerApiScriptTag.parentNode.insertBefore(tag, iframePlayerApiScriptTag);
+		
+		// 「IFrameプレーヤーAPI」のコードが読み込まれた後、
+		// 「iframe_player_api」というIDがついている<div>タグが
+		// YouTube動画プレーヤーの<iframe>タグに置き換えられる。
+		var player;
+		function onYouTubePlayerAPIReady() {
+				//ここで指定しているID名（「iframe_player_api」）がついた
+				//<div>タグ（上記）は、ページが表示される前に
+				//自動的に<iframe>タグ（動画プレーヤー）に置き換えられます。
+				player = new YT.Player('iframe_player_api', {
+						//動画プレーヤーの横幅（width）と縦幅（height）
+						width: videoWidth,
+						height: videoHeight,
+						//表示させるYouTube動画の「動画ID」
+						videoId: youtubeVideoID,
+						//動画プレーヤーの設定をおこなう「パラメータ」
+						playerVars: {
+								//左の値は「パラメータの名前」。
+								//右の値は「パラメータの値」。
+								'modestbranding': 1,
+								'controls': 1,
+								'showinfo': 0,
+								'rel': 0
+								
+						},
+						//「イベントリスナー」
+						events: {
+								//左の値は「イベントリスナー」。
+								//右の値はそのイベントが発生した時に実行される関数。
+								'onReady': onPlayerReady,
+								'onStateChange': onPlayerStateChange
+						}
+				});
+		}
+		//動画を再生する準備が整ったときに実行される関数
+		function onPlayerReady(){
+					
+		}
+		//動画の再生状態が変わったときに実行される関数
+		function onPlayerStateChange(event){
+					
+					switch(event.data){
+						 case YT.PlayerState.ENDED:
+									
+									if( redirectTargetBlank ){
+										var redirectATag = document.createElement('a');
+										redirectATag.href = redirectUrl;
+										redirectATag.target = '_blank';
+										document.body.appendChild(redirectATag);
+										redirectATag.click();
+									}else{
+										location.href = redirectUrl;
+									}
+									
+								break;
+						 case YT.PlayerState.PLAYING:
+								break;
+						 case YT.PlayerState.PAUSED:
+								break;
+						 case YT.PlayerState.BUFFERING:
+								break;
+						 case YT.PlayerState.CUED:
+								break;
+					}
+		}
+	</script>
+  <!--
+　　<iframe width="560" height="315" src="https://www.youtube.com/embed/G9h98vmX2Us?rel=0&amp;autoplay=1&amp;playlist=G9h98vmX2Us" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  -->
 </body>
 </html>
