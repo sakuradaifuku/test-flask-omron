@@ -1,10 +1,69 @@
-import os, datetime
+import os
+import datetime
 import psycopg2
+import fitbit, time
 
 class SensorProcess():
-    def __init__(self):pass
-    def insertSensorData(self):
-        pass
+    def __init__(self):
+        self.dp = DBProcess()
+        # メモしたID等
+        self.CLIENT_ID = os.environ["CLIENT_ID"]
+        self.CLIENT_SECRET = os.environ["CLIENT_SECRET"]
+        self.ACCESS_TOKEN = os.environ["ACCESS_TOKEN"]
+        self.REFRESH_TOKEN = os.environ["REFRESH_TOKEN"]
+
+        # ID等の設定
+        self.client = fitbit.Fitbit(self.CLIENT_ID,                                 self.CLIENT_SECRET,
+                            access_token=self.ACCESS_TOKEN,
+                            refresh_token=self.REFRESH_TOKEN,
+                            )
+
+    def getDataFromFitbit(self):
+        count = 0 # 10000レコード(2000回)のカウントに使う
+        # data_from_fitbit = []
+        while count < 2000:
+            #現在の年月日，時刻
+            today = datetime.datetime.now()
+            today_before_minutes = today + datetime.timedelta(minutes=-5)
+
+            #消費カロリー関連のデータ取得
+            raw_data = self.client.intraday_time_series("activities/calories", base_date="today", detail_level="1min", start_time="{0}:{1}".format(today_before_minutes.hour, today_before_minutes.minute), end_time="{0}:{1}".format(datetime.datetime.now().hour, datetime.datetime.now().minute))
+            list_of_dict_cal_time = raw_data["activities-calories-intraday"]["dataset"]
+            len_dicts_cal_time = len(list_of_dict_cal_time)
+
+            #カロリーのリストを作成
+            calories_list =[]
+            for i in range(len_dicts_cal_time):
+                tmp = list_of_dict_cal_time[i]["value"]
+                tmp = float(f"{tmp:.2f}") #小数点2桁まで
+                calories_list.append(tmp)
+
+            #時間のリスト(str)を作成
+            str_time_list = []
+            for i in range(len_dicts_cal_time):
+                tmp = list_of_dict_cal_time[i]["time"]
+                str_time_list.append(tmp)  #["00:00:00"]
+
+            #上で作った文字列の時刻リストをdatetime型に
+            str_split_time = []
+            for i in range(len_dicts_cal_time):
+                tmp = str_time_list[i].split(":")
+                str_split_time.append(tmp) # [["00", "00", "00"], ・・]
+            #ここでdatetimeに変更
+            datetime_time = []
+            for i in range(len_dicts_cal_time):
+                datetime_time.append(datetime.datetime(int(today.year), int(today.month), int(today.day), int(str_split_time[i][0]), int(str_split_time[i][1]), int(str_split_time[i][2])))
+
+            #calories_listとdatetime_timeから辞書を作成，キー設定
+            #辞書のリスト作成
+            for i in range(len_dicts_cal_time):
+                tmp = {"datetime": datetime_time[i], "calories": calories_list[i]}
+                tmp["user_id"] = "a001" # user_id（固定）の追加
+                self.dp.dbInsert(tmp)
+                # data_from_fitbit.append(tmp)
+
+            count += 1
+            time.sleep(120)
 
 '''
 http://h2shiki.hateblo.jp/entry/2016/05/05/210738
@@ -42,8 +101,10 @@ class DBProcess():
         [引数]
         ●record
         ・(dict){"attr1":data1, "attr2":data2,...}
-        ・シリアルプライマリーキーであるidとdatetimeは引数にしない！
-        ・idはgetMaxID()から，datetimeはSQLのnow()から取得する．
+        ・シリアルプライマリーキーであるidは引数にしない！
+        ・idはgetMaxID()からから取得する．
+        [変更]
+        ・datetimeはSQLのnow()から，ではなく引数に含めて受け取る．
         '''
         attrs = ""
         datas = ""
@@ -60,7 +121,7 @@ class DBProcess():
         with self.getDBConn() as conn:
             with conn.cursor() as cursor:
                 id = str(self.getMaxID()+1)
-                sql = "insert into {0}(id,{1},datetime) values({2},{3},now())".format(self.tableName, attrs, id, datas)
+                sql = "insert into {0}(id,{1}) values({2},{3})".format(self.tableName, attrs, id, datas)
                 cursor.execute(sql)
                 conn.commit()
     
