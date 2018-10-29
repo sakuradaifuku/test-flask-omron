@@ -137,7 +137,7 @@
 <body>
 
 <!-- この<div>タグは、下記のJavaScriptの働きによって、ページが表示される前に自動的に<iframe>タグ（動画プレーヤー）に置き換えられます。 -->
-<div id="iframe_player_api"></div>
+<div id="iframe"></div>
 	
 	
 	<script type="text/javascript">
@@ -156,7 +156,7 @@
 				//ここで指定しているID名（「iframe_player_api」）がついた
 				//<div>タグ（上記）は、ページが表示される前に
 				//自動的に<iframe>タグ（動画プレーヤー）に置き換えられます。
-				player = new YT.Player('iframe_player_api', {
+				player = new YT.Player('iframe', {
 						//動画プレーヤーの横幅（width）と縦幅（height）
 						width: videoWidth,
 						height: videoHeight,
