@@ -3,7 +3,7 @@ $(function(){
     var tabbody = $(".panel_area li")
     $(".tab_area li").click(function(){
         // 選択されたタブのインデックスを取得
-        var idx = tablist.index($(this))
+        var idx = $(this).index($(this))
         // タブの遷移処理
         tablist.removeClass("active").eq(idx).addClass("active")
         tabbody.removeClass("active").eq(idx).addClass("active")
