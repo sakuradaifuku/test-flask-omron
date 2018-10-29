@@ -1,12 +1,13 @@
 $(function(){
     $(".tab_area li").click(function(){
-        // パネル部分の取得
-        var tabbody = $(".panel_area li")
+        // タブ・パネル部分の取得
+        var tabs = $(".tab_area li")
+        var panels = $(".panel_area li")
         // 選択されたタブのインデックスを取得
         var idx = $(this).index()
         // タブの遷移処理
-        $(this).addClass("active")
-        tabbody.removeClass("active").eq(idx).addClass("active")
+        tabs.removeClass("active").eq(idx).addClass("active")
+        panels.removeClass("active").eq(idx).addClass("active")
     })
 
 
