@@ -112,11 +112,11 @@ class DBProcess():
         for attr,data in record.items():
             if i<len(record)-1:
                 attrs += str(attr) + ","
-                datas += "{0},".format(str(data)) if attr!="user_id" else "'{0}',".format(data)
+                datas += "{0},".format(str(data)) if attr!="user_id" or attr!="datetime" else "'{0}',".format(data)
                 i += 1
             else:
                 attrs += str(attr)
-                datas += "{0}".format(str(data)) if attr!="user_id" else "'{0}'".format(data)
+                datas += "{0}".format(str(data)) if attr!="user_id" or attr!="datetime" else "'{0}'".format(data)
 
         with self.getDBConn() as conn:
             with conn.cursor() as cursor:
