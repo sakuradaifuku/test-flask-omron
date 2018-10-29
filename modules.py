@@ -57,7 +57,7 @@ class SensorProcess():
             #calories_listとdatetime_timeから辞書を作成，キー設定
             #辞書のリスト作成
             for i in range(len_dicts_cal_time):
-                tmp = {"datetime": datetime_time[i], "calories": calories_list[i]}
+                tmp = {"datetime": datetime_time[i], "calorie": calories_list[i]}
                 tmp["user_id"] = "a001" # user_id（固定）の追加
                 self.dp.dbInsert(tmp)
                 # data_from_fitbit.append(tmp)
