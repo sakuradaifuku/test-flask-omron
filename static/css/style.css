@@ -29,7 +29,7 @@ a{
 .tab_area{
   list-style-type:none;
   margin:0;
-  padding:3px;
+  padding:0;
   overflow:hidden;
 }
 .tab_area>li{
