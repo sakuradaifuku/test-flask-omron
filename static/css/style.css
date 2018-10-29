@@ -43,20 +43,8 @@ a{
   cursor:pointer;
 }
 .tab_area>li.active{
-  background-color:#999;
+  background-color:#ff8800;
   cursor:default;
-  
-  position: relative;
-  /*display: inline-block;*/
-}
-.tab_area>li.active:before{
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -15px;
-  border: 15px solid transparent;
-  border-top: 15px solid #e0edff;
 }
 .panel_area{
   background-color:#fff;

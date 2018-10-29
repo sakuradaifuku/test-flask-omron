@@ -5,7 +5,7 @@ $(function(){
         // 選択されたタブのインデックスを取得
         var idx = $(this).index()
         // タブの遷移処理
-        $(this).removeClass("active").eq(idx).addClass("active")
+        $(this).addClass("active")
         tabbody.removeClass("active").eq(idx).addClass("active")
     })
 
