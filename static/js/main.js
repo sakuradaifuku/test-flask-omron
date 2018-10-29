@@ -1,7 +1,7 @@
 $(function(){
+    // パネル部分の取得
+    var tabbody = $(".panel_area li")
     $(".tab_area li").click(function(){
-        // パネル部分の取得
-        var tabbody = $(".panel_area li")
         // 選択されたタブのインデックスを取得
         var idx = tablist.index($(this))
         // タブの遷移処理
