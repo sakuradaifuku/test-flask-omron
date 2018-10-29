@@ -5,10 +5,10 @@ from modules import BasicProcess, SensorProcess#, DBProcess
 
 app = Flask(__name__)
 bp = BasicProcess()
-sp = SensorProcess()
+#sp = SensorProcess()
 # スレッドの生成
-thread_fitbit = threading.Thread(target=sp.getDataFromFitbit())
-thread_flask = threading.Thread(target=flask_run())
+#thread_fitbit = threading.Thread(target=sp.getDataFromFitbit())
+#thread_flask = threading.Thread(target=flask_run())
 
 @app.route("/")
 def hello_world():
@@ -48,5 +48,6 @@ def flask_run():
     app.run()
 
 if __name__ == "__main__":
-    thread_flask.start()
-    thread_fitbit.start()
+    #thread_flask.start()
+    #thread_fitbit.start()
+    flask_run()
