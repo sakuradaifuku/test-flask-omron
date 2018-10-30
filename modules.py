@@ -104,6 +104,7 @@ class BasicProcess():
         '''
         calories = []
         for _calorie in _calories:
+            # psqlで固定小数点型Decimalとなっているが，JSで扱えないのでここでfloatに変換．
             calories.append({"id":_calorie[0], "calorie":float(_calorie[1]), "datetime":_calorie[2]})
         
         return calories
