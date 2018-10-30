@@ -43,7 +43,7 @@
 			"https://www.youtube.com/watch?v=ef51Z2mWJNg"
 			);
 		
-		var video_city = new Array(
+		var video_cg = new Array(
 			"https://www.youtube.com/watch?v=ubNnN0cYvI4&index=1&list=PLuQU2pjF9-OAmlXs9BrjAmxIPb3j-ljFI"
 			);
 		
@@ -65,6 +65,14 @@ for(var i = 0; i < param.length; i++) {
 var target = 'category'
 alert(params[0][1]);
 		
+		if (params[0][1] == 'nature') {
+			redirectUrl = video_nature[videonum];
+		} else if (params[0][1] == 'city') {
+			redirectUrl = video_city[videonum];
+		} else {
+			redirectUrl = video_cg[videonum]
+		}
+			
 			//★リダイレクト先のページを新しいウィンドウ（新しいタブ）で開くか、
 			//  同じページ内で開くかを設定する
 							//新しいウィンドウ（新しいタブ）で開く「1」 / 同じページ内で開く「0」
