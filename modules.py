@@ -93,6 +93,8 @@ class BasicProcess():
     
     def getDBCalorie(self):
         calorie = self.dp.dbSelect("id,calorie,datetime")
+        for c in calorie:
+            c["calorie"] = float(calorie["calorie"])
         return calorie
     
     def shapeCalorieData(self, _calories):

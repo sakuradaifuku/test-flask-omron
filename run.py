@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-import simplejson as json
 
 from modules import BasicProcess
 
@@ -24,8 +23,8 @@ def front_test():
     restCalorie = bp.getRestCalorie(calorieperday)
     exerciseRank, movieNum = bp.selectExercise(restCalorie)
     return render_template("front_test.html", 
-                calorieperday = json.dumps(calorieperdayForGraph), # リストに日本語含めないように．含める場合はensure_ascii=Falseのオプションが必要？
-                calorieperfift = json.dumps(calorieperfiftForGraph),
+                calorieperday = calorieperdayForGraph, # リストに日本語含めないように．含める場合はensure_ascii=Falseのオプションが必要？
+                calorieperfift = calorieperfiftForGraph,
                 currentCalorie = currentCalorie,
                 restCalorie = restCalorie,
                 exerciseRank = exerciseRank,
