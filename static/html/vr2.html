@@ -35,15 +35,35 @@
 			//★表示させるYouTube動画の「動画ID」を設定する。
 							var youtubeVideoID = "G9h98vmX2Us";
 		
+		var video_nature = new Array(
+			"https://www.youtube.com/watch?v=L0A0qksSV6g"
+			);
+		
+		var video_city = new Array(
+			"https://www.youtube.com/watch?v=ef51Z2mWJNg"
+			);
+		
+		var video_city = new Array(
+			"https://www.youtube.com/watch?v=ubNnN0cYvI4&index=1&list=PLuQU2pjF9-OAmlXs9BrjAmxIPb3j-ljFI"
+			);
+		
 				var video_list = new Array(
 "https://www.youtube.com/watch?v=USAYkOiKbPw",
 "https://www.youtube.com/watch?v=0RtmVnD8_XM",
 "https://www.youtube.com/watch?v=USAYkOiKbPw",
 );
-		var videonum = Math.floor(Math.random() * video_list.length);    
+		var videonum = Math.floor(Math.random() * video_city.length);    
 							
 			//★リダイレクトさせる移動先のページのURLを設定する。
-							var redirectUrl = video_list[videonum];
+		var params = [];
+var param = location.search.substring(1).split('&');
+for(var i = 0; i < param.length; i++) {
+    params[i] = param[i].split('=');
+}
+ 
+// パラメータの使用
+var target = 'category'
+alert(params[0][1]);
 		
 			//★リダイレクト先のページを新しいウィンドウ（新しいタブ）で開くか、
 			//  同じページ内で開くかを設定する
@@ -73,20 +93,6 @@
 	
 </head>
 <body>
-	
-	<script>
-		var params = [];
-var param = location.search.substring(1).split('&');
-for(var i = 0; i < param.length; i++) {
-    params[i] = param[i].split('=');
-}
- 
-// パラメータの使用
-var target = 'category'
-for(var i = 0; i < params.length; i++) {
-        alert(params[i][1]);
-}
-	</script>
 
 <!-- この<div>タグは、下記のJavaScriptの働きによって、ページが表示される前に自動的に<iframe>タグ（動画プレーヤー）に置き換えられます。 -->
 <div id="iframe"></div>
