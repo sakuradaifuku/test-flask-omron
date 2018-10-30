@@ -73,6 +73,22 @@
 	
 </head>
 <body>
+	
+	<script>
+		var params = [];
+var param = location.search.substring(1).split('&');
+for(var i = 0; i < param.length; i++) {
+    params[i] = param[i].split('=');
+}
+ 
+// パラメータの使用
+var target = 'pattern'
+for(var i = 0; i < params.length; i++) {
+    if(params[i][0] == target) {
+        alert(params[i][1]);
+    }
+}
+	</script>
 
 <!-- この<div>タグは、下記のJavaScriptの働きによって、ページが表示される前に自動的に<iframe>タグ（動画プレーヤー）に置き換えられます。 -->
 <div id="iframe"></div>
