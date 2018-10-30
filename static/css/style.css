@@ -63,13 +63,19 @@ a{
 .calorieTable{
   margin: 0;
   width: 100%;
-  height: 20%;
+  height: 30%;
 }
 .calorieTable th{
   font-size:12px;
+  padding: 0;
 }
 .calorieTable td{
   font-size:16px;
+  padding: 0;
+}
+.calorieTable th p, .calorieTable td p{
+  margin-block-start: 0em!important;
+  margin-block-end: 0em!important;
 }
 
 .campaign {
