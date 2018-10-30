@@ -22,7 +22,7 @@
             <canvas id="FiftChart" width='100%' height='25px'></canvas>
             <script>
               // Pythonからのデータを受け取る
-              var caloriePerFift = JSON.stringify({{ calorieperfift }}).replace(/\"/g, '\"\"')
+              var caloriePerFift = {{ calorieperfift }}
               alert(caloriePerFift)
               // データをグラフ用に整形
               var times = []
