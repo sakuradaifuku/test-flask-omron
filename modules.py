@@ -121,7 +121,8 @@ class DBProcess():
 
         with self.getDBConn() as conn:
             with conn.cursor() as cursor:
-                id = str(self.getMaxID()+1)
+                dbnum = self.getMaxID()
+                id = dbnum+1 if not dbnum else 0
                 sql = "insert into {0}(id,{1}) values({2},{3})".format(self.tableName, attrs, id, datas)
                 cursor.execute(sql)
                 conn.commit()
