@@ -128,7 +128,7 @@ class DBProcess():
                 print("\n\n\n\n\n\n\n\n{0}\n\n\n\n\n\n\n".format(dbnum)) # herokuのlogsで確認！！
                 #id = 0 if not dbnum else dbnum+1
                 #sql = "insert into {0}(id,{1}) values({2},{3})".format(self.tableName, attrs, id, datas)
-                sql = "insert into {0}({1}) values({2},{3})".format(self.tableName, attrs, datas)
+                sql = "insert into {0}({1}) values({3})".format(self.tableName, attrs, datas)
                 cursor.execute(sql)
                 conn.commit()
     
