@@ -22,7 +22,7 @@
             <canvas id="FiftChart" width='100%' height='25px'></canvas>
             <script>
               // Pythonからのデータを受け取る
-              var caloriePerFift = {{ calorieperfift|tojson }}
+              var caloriePerFift = {{ calorieperfift }}
               // データをグラフ用に整形
               var times = []
               var tCalories = []
@@ -56,7 +56,7 @@
             <canvas id="DayChart" width='100%' height='25px'></canvas>
             <script>
               // Pythonからのデータを受け取る
-              var caloriePerDay = {{ calorieperday|tojson }}
+              var caloriePerDay = {{ calorieperday }}
               // データをグラフ用に整形
               var dates = []
               var dCalories = []
