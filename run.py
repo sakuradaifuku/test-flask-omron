@@ -1,14 +1,9 @@
 from flask import Flask, render_template
-import threading
 
-from modules import BasicProcess, SensorProcess
+from modules import BasicProcess
 
 app = Flask(__name__)
 bp = BasicProcess()
-#sp = SensorProcess()
-# スレッドの生成
-#thread_fitbit = threading.Thread(target=sp.getDataFromFitbit())
-#thread_flask = threading.Thread(target=flask_run())
 
 @app.route("/")
 def hello_world():
@@ -43,9 +38,5 @@ def hello_postgresql():
     calorieperday, currentDay = bp.getDayConsumedCalorie(calories)
     return render_template("test.html", psqldatas = calories, calorieperday = calorieperday)
 
-
-def flask_run():
-    app.run()
-
 if __name__ == "__main__":
-    flask_run()
+    app.run()
