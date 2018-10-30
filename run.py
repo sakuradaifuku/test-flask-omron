@@ -19,8 +19,8 @@ def front_test():
 
     calorieperdayForGraph = bp.getGraphDatas(calorieperday, 15)
     calorieperfiftForGraph = bp.getGraphDatas(calorieperfift, 15)
-    currentCalorie = round(calorieperdayForGraph[currentDay],2)
-    restCalorie = round(bp.getRestCalorie(calorieperday),2)
+    currentCalorie = round(calorieperdayForGraph[currentDay],2) # ここで小数点以下2桁に整形
+    restCalorie = round(bp.getRestCalorie(calorieperday),2) # ここで小数点以下2桁に整形
     exerciseRank, movieNum = bp.selectExercise(restCalorie)
     return render_template("front_test.html", 
                 calorieperday = calorieperdayForGraph, # リストに日本語含めないように．含める場合はensure_ascii=Falseのオプションが必要？
