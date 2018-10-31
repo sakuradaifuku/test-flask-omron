@@ -1,0 +1,190 @@
+<html lang="ja" xml:lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>ながら測定器</title>
+
+	<script type="text/javascript">
+		/*
+		* 解説ページ
+		* https://wisdommingle.com/youtube-iframe-api-player-video-end-point-redirect/
+		*
+		* 倉田幸暢(Yukinobu Kurata)
+		* https://wisdommingle.com
+		*
+		* Copyright (c) 2013 Yukinobu Kurata
+		* Released under the MIT license
+		* https://github.com/YukinobuKurata/YouTubeEndPointRedirect/blob/master/MIT-LICENSE.txt
+		*
+		* MITライセンスについて
+		* https://wisdommingle.com/mit-license/
+		*/
+
+		//**************************************************************************
+
+			//★ユーザー用の設定項目
+
+			//★動画プレーヤーの横幅と縦幅を設定する（ピクセル数）。
+
+							//横幅
+							var videoWidth = 530;
+
+							//縦幅
+							var videoHeight = 298;
+
+			//★表示させるYouTube動画の「動画ID」を設定する。
+							var youtubeVideoID = "G9h98vmX2Us";
+
+		var video_nature = new Array(
+			"https://www.youtube.com/watch?v=L0A0qksSV6g"
+			);
+
+		var video_city = new Array(
+			"https://www.youtube.com/watch?v=ef51Z2mWJNg"
+			);
+
+		var video_cg = new Array(
+			"https://www.youtube.com/watch?v=ubNnN0cYvI4&index=1&list=PLuQU2pjF9-OAmlXs9BrjAmxIPb3j-ljFI"
+			);
+
+				var video_list = new Array(
+"https://www.youtube.com/watch?v=USAYkOiKbPw",
+"https://www.youtube.com/watch?v=0RtmVnD8_XM",
+"https://www.youtube.com/watch?v=USAYkOiKbPw",
+);
+		var videonum = Math.floor(Math.random() * video_city.length);
+
+			//★リダイレクトさせる移動先のページのURLを設定する。
+		var params = [];
+var param = location.search.substring(1).split('&');
+for(var i = 0; i < param.length; i++) {
+    params[i] = param[i].split('=');
+}
+
+// パラメータの使用
+var target = 'category'
+alert(params[0][1]);
+
+		if (params[0][1] == 'nature') {
+			redirectUrl = video_nature[videonum];
+		} else if (params[0][1] == 'city') {
+			redirectUrl = video_city[videonum];
+		} else {
+			redirectUrl = video_cg[videonum]
+		}
+
+			//★リダイレクト先のページを新しいウィンドウ（新しいタブ）で開くか、
+			//  同じページ内で開くかを設定する
+							//新しいウィンドウ（新しいタブ）で開く「1」 / 同じページ内で開く「0」
+							var redirectTargetBlank = 0;
+
+		//**************************************************************************
+	</script>
+
+	 <style type="text/css">
+            html, body {
+                height:100%;
+            }
+            #container {
+                height: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            iframe {
+                width: 100%;
+                height: 100%;
+                autoplay: 1;
+                rel: 0;
+                border:1px solid #CCC;
+            }
+     </style>
+
+</head>
+<body>
+
+<!-- この<div>タグは、下記のJavaScriptの働きによって、ページが表示される前に自動的に<iframe>タグ（動画プレーヤー）に置き換えられます。 -->
+<div id="iframe"></div>
+
+
+	<script type="text/javascript">
+		// YouTubeのウェブサイト上にある「IFrameプレーヤーAPI」のコードを
+		// 非同期的に読み込む。
+		var tag = document.createElement('script');
+		tag.src = "https://www.youtube.com/iframe_api";
+		var iframePlayerApiScriptTag = document.getElementsByTagName('script')[0];
+		iframePlayerApiScriptTag.parentNode.insertBefore(tag, iframePlayerApiScriptTag);
+
+		// 「IFrameプレーヤーAPI」のコードが読み込まれた後、
+		// 「iframe_player_api」というIDがついている<div>タグが
+		// YouTube動画プレーヤーの<iframe>タグに置き換えられる。
+		var player;
+		function onYouTubePlayerAPIReady() {
+				//ここで指定しているID名（「iframe_player_api」）がついた
+				//<div>タグ（上記）は、ページが表示される前に
+				//自動的に<iframe>タグ（動画プレーヤー）に置き換えられます。
+				player = new YT.Player('iframe', {
+						//動画プレーヤーの横幅（width）と縦幅（height）
+						width: videoWidth,
+						height: videoHeight,
+						//表示させるYouTube動画の「動画ID」
+						videoId: youtubeVideoID,
+						//動画プレーヤーの設定をおこなう「パラメータ」
+						playerVars: {
+								//左の値は「パラメータの名前」。
+								//右の値は「パラメータの値」。
+								'modestbranding': 1,
+								'controls': 1,
+								'showinfo': 0,
+								'rel': 0,
+							        autoplay: 1,
+							        enablejsapi:1,
+
+						},
+						//「イベントリスナー」
+						events: {
+								//左の値は「イベントリスナー」。
+								//右の値はそのイベントが発生した時に実行される関数。
+								'onReady': onPlayerReady,
+								'onStateChange': onPlayerStateChange
+						}
+				});
+		}
+		//動画を再生する準備が整ったときに実行される関数
+		function onPlayerReady(){
+
+		}
+		//動画の再生状態が変わったときに実行される関数
+		function onPlayerStateChange(event){
+
+					switch(event.data){
+						 case YT.PlayerState.ENDED:
+
+									if( redirectTargetBlank ){
+										var redirectATag = document.createElement('a');
+										redirectATag.href = redirectUrl;
+										redirectATag.target = '_blank';
+										document.body.appendChild(redirectATag);
+										redirectATag.click();
+									}else{
+										location.href = redirectUrl;
+									}
+
+								break;
+						 case YT.PlayerState.PLAYING:
+								break;
+						 case YT.PlayerState.PAUSED:
+								break;
+						 case YT.PlayerState.BUFFERING:
+								break;
+						 case YT.PlayerState.CUED:
+								break;
+					}
+		}
+	</script>
+
+</body>
+</html>
+  <!--
+　　<iframe width="560" height="315" src="https://www.youtube.com/embed/G9h98vmX2Us?rel=0&amp;autoplay=1&amp;playlist=G9h98vmX2Us" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</body>
+</html>
+<-->
