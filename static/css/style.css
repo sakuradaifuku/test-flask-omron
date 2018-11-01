@@ -60,6 +60,13 @@ a{
   display:block;
 }
 
+.panel{
+  width: 100%;
+}
+.panel canvas{
+  margin: 0 auto;
+}
+
 .calorieTable{
   margin: 0;
   width: 100%;
