@@ -32,43 +32,13 @@
 							var videoHeight = 298;
 
 			//★表示させるYouTube動画の「動画ID」を設定する。
-							var youtubeVideoID = "F649Q62EHto";
+							var youtubeVideoID = "L0A0qksSV6g";
 
-		var video_nature = new Array(
-			"https://www.youtube.com/watch?v=L0A0qksSV6g"
-			);
-
-		var video_city = new Array(
-			"https://www.youtube.com/watch?v=ef51Z2mWJNg"
-			);
-
-		var video_cg = new Array(
-			"https://www.youtube.com/watch?v=ubNnN0cYvI4&index=1&list=PLuQU2pjF9-OAmlXs9BrjAmxIPb3j-ljFI"
-			);
-
-				var video_list = new Array(
-"https://www.youtube.com/watch?v=USAYkOiKbPw",
-"https://www.youtube.com/watch?v=0RtmVnD8_XM",
-"https://www.youtube.com/watch?v=USAYkOiKbPw",
-);
-		var videonum = Math.floor(Math.random() * video_city.length);
 
 			//★リダイレクトさせる移動先のページのURLを設定する。
-		var params = [];
-var param = location.search.substring(1).split('&');
-for(var i = 0; i < param.length; i++) {
-    params[i] = param[i].split('=');
-}
+		redirectUrl = "https://test-flask-omron.herokuapp.com/front_test"
 
 // パラメータの使用
-
-		if (params[0][1] == 'nature') {
-			redirectUrl = video_nature[videonum];
-		} else if (params[0][1] == 'city') {
-			redirectUrl = video_city[videonum];
-		} else {
-			redirectUrl = video_cg[videonum]
-		}
 
 			//★リダイレクト先のページを新しいウィンドウ（新しいタブ）で開くか、
 			//  同じページ内で開くかを設定する
