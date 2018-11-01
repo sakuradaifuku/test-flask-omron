@@ -173,13 +173,13 @@ class BasicProcess():
 
     def selectExercise(self, rest):
         if rest <= 0:
-            return -1
+            return "達成済", "movie1"
         elif rest < 200:
             return "弱", "movie1"
-        elif rest < 500:
+        elif rest < 800:
             return "中", "movie2"
         else:
-            return "強", "movie3"
+            return "達成済", "movie3"
 
     '''
     def getExerciseTime(self, rest):
