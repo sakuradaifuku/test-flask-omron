@@ -24,6 +24,7 @@ class DBProcess():
             password = self.DB_PASSWORD
         )
     
+    '''
     def getMaxID(self):
         with self.getDBConn() as conn:
             with conn.cursor() as cursor:
@@ -32,7 +33,8 @@ class DBProcess():
                 result = cursor.fetchone()
                 (currentID,) = result
         return currentID
-    
+    '''
+
     def dbInsert(self, record):
         '''
         [引数]
@@ -57,9 +59,9 @@ class DBProcess():
 
         with self.getDBConn() as conn:
             with conn.cursor() as cursor:
+                '''
                 #dbnum = self.getMaxID()
                 #print("\n\n\n\n\n\n\n\ndbMax : {0}\n\n\n\n\n\n\n".format(dbnum)) # herokuのlogsで確認！！
-                '''
                 id = 0 if not dbnum else dbnum+1
                 sql = "insert into {0}(id,{1}) values({2},{3})".format(self.tableName, attrs, id, datas)
                 '''

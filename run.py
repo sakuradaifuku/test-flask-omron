@@ -23,7 +23,7 @@ def front_test():
     restCalorie = round(bp.getRestCalorie(calorieperday),2) # ここで小数点以下2桁に整形
     exerciseRank, movieNum = bp.selectExercise(restCalorie)
     return render_template("front_test.html", 
-                calorieperday = calorieperdayForGraph, # リストに日本語含めないように．含める場合はensure_ascii=Falseのオプションが必要？
+                calorieperday = calorieperdayForGraph, # リストに日本語含めないように．含める場合はテンプレート側のtojsonでは対応しにくい．
                 calorieperfift = calorieperfiftForGraph,
                 currentCalorie = currentCalorie,
                 restCalorie = restCalorie,
