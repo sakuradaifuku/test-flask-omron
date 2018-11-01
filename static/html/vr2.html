@@ -2,16 +2,15 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>ながら測定器</title>
-	
-	<script type="text/javascript">
 
+	<script type="text/javascript">
 		/*
 		* 解説ページ
 		* https://wisdommingle.com/youtube-iframe-api-player-video-end-point-redirect/
-		* 
+		*
 		* 倉田幸暢(Yukinobu Kurata)
 		* https://wisdommingle.com
-		* 
+		*
 		* Copyright (c) 2013 Yukinobu Kurata
 		* Released under the MIT license
 		* https://github.com/YukinobuKurata/YouTubeEndPointRedirect/blob/master/MIT-LICENSE.txt
@@ -19,66 +18,25 @@
 		* MITライセンスについて
 		* https://wisdommingle.com/mit-license/
 		*/
-		
 		//**************************************************************************
-			
 			//★ユーザー用の設定項目
-			
 			//★動画プレーヤーの横幅と縦幅を設定する（ピクセル数）。
-							
 							//横幅
 							var videoWidth = 530;
-							
 							//縦幅
 							var videoHeight = 298;
-							
 			//★表示させるYouTube動画の「動画ID」を設定する。
-							var youtubeVideoID = "lc7VUsLKkyE";
-		
-		var video_nature = new Array(
-			"https://www.youtube.com/watch?v=L0A0qksSV6g"
-			);
-		
-		var video_city = new Array(
-			"https://www.youtube.com/watch?v=ef51Z2mWJNg"
-			);
-		
-		var video_cg = new Array(
-			"https://www.youtube.com/watch?v=ubNnN0cYvI4&index=1&list=PLuQU2pjF9-OAmlXs9BrjAmxIPb3j-ljFI"
-			);
-		
-				var video_list = new Array(
-"https://www.youtube.com/watch?v=USAYkOiKbPw",
-"https://www.youtube.com/watch?v=0RtmVnD8_XM",
-"https://www.youtube.com/watch?v=USAYkOiKbPw",
-);
-		var videonum = Math.floor(Math.random() * video_city.length);    
-							
+							var youtubeVideoID = "L0A0qksSV6g";
 			//★リダイレクトさせる移動先のページのURLを設定する。
-		var params = [];
-var param = location.search.substring(1).split('&');
-for(var i = 0; i < param.length; i++) {
-    params[i] = param[i].split('=');
-}
- 
+		redirectUrl = "https://test-flask-omron.herokuapp.com/front_test"
 // パラメータの使用
-		
-		if (params[0][1] == 'nature') {
-			redirectUrl = video_nature[videonum];
-		} else if (params[0][1] == 'city') {
-			redirectUrl = video_city[videonum];
-		} else {
-			redirectUrl = video_cg[videonum]
-		}
-			
 			//★リダイレクト先のページを新しいウィンドウ（新しいタブ）で開くか、
 			//  同じページ内で開くかを設定する
 							//新しいウィンドウ（新しいタブ）で開く「1」 / 同じページ内で開く「0」
 							var redirectTargetBlank = 0;
-			
 		//**************************************************************************
 	</script>
-	
+
 	 <style type="text/css">
             html, body {
                 height:100%;
@@ -96,14 +54,14 @@ for(var i = 0; i < param.length; i++) {
                 border:1px solid #CCC;
             }
      </style>
-	
+
 </head>
 <body>
 
 <!-- この<div>タグは、下記のJavaScriptの働きによって、ページが表示される前に自動的に<iframe>タグ（動画プレーヤー）に置き換えられます。 -->
 <div id="iframe"></div>
-	
-	
+
+
 	<script type="text/javascript">
 		// YouTubeのウェブサイト上にある「IFrameプレーヤーAPI」のコードを
 		// 非同期的に読み込む。
@@ -111,7 +69,6 @@ for(var i = 0; i < param.length; i++) {
 		tag.src = "https://www.youtube.com/iframe_api";
 		var iframePlayerApiScriptTag = document.getElementsByTagName('script')[0];
 		iframePlayerApiScriptTag.parentNode.insertBefore(tag, iframePlayerApiScriptTag);
-		
 		// 「IFrameプレーヤーAPI」のコードが読み込まれた後、
 		// 「iframe_player_api」というIDがついている<div>タグが
 		// YouTube動画プレーヤーの<iframe>タグに置き換えられる。
@@ -136,7 +93,6 @@ for(var i = 0; i < param.length; i++) {
 								'rel': 0,
 							        autoplay: 1,
 							        enablejsapi:1,
-								
 						},
 						//「イベントリスナー」
 						events: {
@@ -149,14 +105,11 @@ for(var i = 0; i < param.length; i++) {
 		}
 		//動画を再生する準備が整ったときに実行される関数
 		function onPlayerReady(){
-					
 		}
 		//動画の再生状態が変わったときに実行される関数
 		function onPlayerStateChange(event){
-					
 					switch(event.data){
 						 case YT.PlayerState.ENDED:
-									
 									if( redirectTargetBlank ){
 										var redirectATag = document.createElement('a');
 										redirectATag.href = redirectUrl;
@@ -166,7 +119,6 @@ for(var i = 0; i < param.length; i++) {
 									}else{
 										location.href = redirectUrl;
 									}
-									
 								break;
 						 case YT.PlayerState.PLAYING:
 								break;
@@ -179,7 +131,7 @@ for(var i = 0; i < param.length; i++) {
 					}
 		}
 	</script>
-	
+
 </body>
 </html>
   <!--
