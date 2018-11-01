@@ -60,9 +60,6 @@ a{
   display:block;
 }
 
-.panel{
-  width: 100%;
-}
 .panel canvas{
   width: 80%;
   margin: 0 auto;
