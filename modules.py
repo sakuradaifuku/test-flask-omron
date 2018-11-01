@@ -179,7 +179,7 @@ class BasicProcess():
         elif rest < 800:
             return "中", "movie2"
         else:
-            return "達成済", "movie3"
+            return "強", "movie3"
 
     '''
     def getExerciseTime(self, rest):
