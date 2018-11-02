@@ -29,7 +29,7 @@ def front_test():
         if exerciseRank=="達成済":
             restCalorie = 0
 
-        print("\n\n\n\n(dbData): {0}\n\n\n\n".format(dbData))
+        print("\n\n\n\n(calories): {0}\n\n\n\n".format(calories))
         print("\n\n\n\n(calorieperfiftForGraph): {0}\n\n\n\n".format(calorieperfiftForGraph))
         
     return render_template("front_test.html", 
