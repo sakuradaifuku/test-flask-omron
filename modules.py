@@ -144,7 +144,7 @@ class BasicProcess():
             
         return caloriePerDay, date
 
-    def get15minConsumedCaloire(self, DB_data):
+    def get15minConsumedCaloire(self, DB_data): # ここでちょっと挙動不審あり．動かなくなったら再デプロイして．
         '''
         [引数]
         ●(list(dict))[{"id": data1_1, "calorie":data1_2, "datetime":data1_3},{"id": data2_1, ...},...]
