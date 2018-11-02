@@ -155,6 +155,7 @@ class BasicProcess():
         '''
         caloriePer15min = {}
         for record in DB_data:
+            print("\n\n\n\n(func): {0}\n\n\n\n".format(record))
             time = "{0}:{1}".format(record["datetime"].hour,record["datetime"].minute)
             caloriePer15min[time] = record["calorie"] # キー：時刻，バリュー：カロリー
         
