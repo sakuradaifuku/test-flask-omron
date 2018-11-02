@@ -155,7 +155,8 @@ class BasicProcess():
         '''
         caloriePer15min = {}
         for record in DB_data:
-            time = "{0}:{1}".format(record["datetime"].hour,record["datetime"].minute)
+            dt = record["datetime"]
+            time = "{0}/{1}/{2}-{3}:{4}".format(dt.year.zfill(2), dt.month.zfill(2), dt.date.zfill(2), dt.hour.zfill(2), dt.minute.zfill(2)) # 0で2桁合わせし，JS側で日付・時刻を分割しやすいように「-」を区切り文字にする
             caloriePer15min[time] = record["calorie"] # キー：時刻，バリュー：カロリー
         
         return caloriePer15min
