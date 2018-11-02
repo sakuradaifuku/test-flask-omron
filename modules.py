@@ -156,7 +156,7 @@ class BasicProcess():
         caloriePer15min = {}
         for record in DB_data:
             dt = record["datetime"]
-            time = "{0}/{1}/{2}-{3}:{4}".format(str(dt.year).zfill(2), str(dt.month).zfill(2), str(dt.day).zfill(2), str(dt.hour).zfill(2), str(dt.minute).zfill(2)) # 0で2桁合わせし，JS側で日付・時刻を分割しやすいように「-」を区切り文字にする
+            time = "{0}/{1}/{2}-{3}:{4}".format(str(dt.year).zfill(2), str(dt.month).zfill(2), str(dt.day).zfill(2), str(dt.hour).zfill(2), str(dt.minute).zfill(2)) # テンプレート側でtojsonするときになぜか数字大小(文字コード順？)でソートされてしまうから，0で2桁合わせし，JS側で日付・時刻を分割しやすいように「-」を区切り文字にする
             caloriePer15min[time] = record["calorie"] # キー：時刻，バリュー：カロリー
         
         return caloriePer15min
