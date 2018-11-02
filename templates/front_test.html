@@ -26,9 +26,11 @@
               // データをグラフ用に整形
               var times = []
               var tCalories = []
-              var str = JSON.stringify(caloriePerFift)
+
+              // jsonの中身確認
+              var str = JSON.stringify({{ calorieperfiftest }})
               $("body").append(str)
-              //console.log(caloriePerFift)
+              
               for(k in caloriePerFift){
                 times.push(k)
                 tCalories.push(caloriePerFift[k])
