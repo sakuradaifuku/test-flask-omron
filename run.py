@@ -29,7 +29,8 @@ def front_test():
         if exerciseRank=="達成済":
             restCalorie = 0
 
-        print("\n\n\n\n{0}\n\n\n\n".format(calorieperfiftForGraph))
+        print("\n\n\n\n(dbData): {0}\n\n\n\n".format(dbData))
+        print("\n\n\n\n(calorieperfiftForGraph): {0}\n\n\n\n".format(calorieperfiftForGraph))
         
     return render_template("front_test.html", 
                 calorieperday = calorieperdayForGraph, # リストに日本語含めないように．含める場合はテンプレート側のtojsonでは対応しにくい．
