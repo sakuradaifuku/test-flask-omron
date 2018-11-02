@@ -155,7 +155,6 @@ class BasicProcess():
         '''
         caloriePer15min = {}
         for record in DB_data:
-            print("\n\n\n\n(func): {0}\n\n\n\n".format(record))
             time = "{0}:{1}".format(record["datetime"].hour,record["datetime"].minute)
             caloriePer15min[time] = record["calorie"] # キー：時刻，バリュー：カロリー
         
@@ -208,6 +207,8 @@ class BasicProcess():
         newDict = {}
         startIndex = 0 if (len(data)-dataNum<0) else len(data)-dataNum
         for i, (k,v) in enumerate(data.items()):
+            
+            print("\n\n\n\n(func): ({0}:{1})\n\n\n\n".format(k,data[k]))
             if i>=startIndex:
                 newDict[k] = data[k]
         return newDict
