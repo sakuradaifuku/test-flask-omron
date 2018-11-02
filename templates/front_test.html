@@ -26,8 +26,9 @@
               // データをグラフ用に整形
               var times = []
               var tCalories = []
+              var str = JSON.stringify(calorieperfift)
+              $("body").append(str)
               for(k in caloriePerFift){
-                $("body").append("<p>"+k+"</p>");
                 times.push(k)
                 tCalories.push(caloriePerFift[k])
               }
