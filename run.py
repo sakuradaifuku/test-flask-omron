@@ -22,6 +22,7 @@ def front_test():
         calorieperfift = bp.get15minConsumedCaloire(calories)
 
         calorieperdayForGraph = bp.getGraphDatas(calorieperday, 15)
+        print("\n\n\n\n{0}\n\n\n\n".format(calorieperdayForGraph))
         calorieperfiftForGraph = bp.getGraphDatas(calorieperfift, 15)
         currentCalorie = round(calorieperdayForGraph[currentDay],2) # ここで小数点以下2桁に整形
         restCalorie = round(bp.getRestCalorie(calorieperday),2) # ここで小数点以下2桁に整形
