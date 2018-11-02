@@ -207,8 +207,6 @@ class BasicProcess():
         newDict = {}
         startIndex = 0 if (len(data)-dataNum<0) else len(data)-dataNum
         for i, (k,v) in enumerate(data.items()):
-            
-            print("\n\n\n\n(func): ({0}:{1})\n\n\n\n".format(k,data[k]))
             if i>=startIndex:
                 newDict[k] = data[k]
         return newDict
