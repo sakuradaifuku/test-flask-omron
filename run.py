@@ -1,5 +1,4 @@
-from flask import Flask, render_template
-import json
+from flask import Flask, render_template, jsonify
 
 from modules import BasicProcess
 
@@ -40,7 +39,7 @@ def front_test():
                 restCalorie = restCalorie,
                 exerciseRank = exerciseRank,
                 movieNum = movieNum,
-                calorieperfiftest = json.dumps(calorieperfiftForGraph, encoding='utf8')
+                jsonify(calorieperfiftest=calorieperfiftForGraph)
                 )
 
 @app.route("/test_postgresql")
