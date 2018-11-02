@@ -40,7 +40,7 @@ def front_test():
                 restCalorie = restCalorie,
                 exerciseRank = exerciseRank,
                 movieNum = movieNum,
-                calorieperfiftest = json.dump(calorieperfiftForGraph)
+                calorieperfiftest = json.dumps(calorieperfiftForGraph)
                 )
 
 @app.route("/test_postgresql")
