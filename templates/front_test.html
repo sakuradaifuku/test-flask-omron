@@ -10,10 +10,6 @@
   <!--<script src="https://aframe.io/releases/latest/aframe.min.js"></script>-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 </head>
-<body>
-  {% for k in calorieperfift %}
-  <p>{{ k }}</p>
-  {% endfor %}
   <div class="main">
     <div class="contents">
       <div class="tab_wrap">
@@ -31,6 +27,7 @@
               var times = []
               var tCalories = []
               for(k in caloriePerFift){
+                $("body").append("<p>"+k+"</p>");
                 times.push(k)
                 tCalories.push(caloriePerFift[k])
               }
