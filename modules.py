@@ -172,12 +172,12 @@ class BasicProcess():
         rest = self.minDayCalorie - getValue[len(getValue)-1]
         return rest
 
-    def selectExercise(self, rest):
-        if rest <= 0:
-            return "達成済", "movie1"
-        elif rest < 200:
+    def selectExercise(self, DB_data):
+        num = range(len(DB_data))-1
+        eval = DB_data[num-1]["calorie"]
+        if eval >=179:
             return "弱", "movie1"
-        elif rest < 800:
+        elif eval < 179 amd eval >= 143:
             return "中", "movie2"
         else:
             return "強", "movie3"
