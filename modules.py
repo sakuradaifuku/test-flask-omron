@@ -175,6 +175,7 @@ class BasicProcess():
     def selectExercise(self, DB_data):
         _keys = DB_data.keys()
         print("\n\n\n\n\n{0}\n\n\n\n".format(DB_data))
+        print("\n\n\n\n\nkeys:{0}\n\n\n\n".format(_keys))
         lastKey = _keys[len(_keys)-1]
         eval = DB_data[lastKey]
         if eval >=179:
