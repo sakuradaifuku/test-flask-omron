@@ -173,8 +173,8 @@ class BasicProcess():
         return rest
 
     def selectExercise(self, DB_data):
-        keys = DB_data.keys()
-        lastKey = keys[-1]
+        _keys = DB_data.keys()
+        lastKey = _keys[len(_keys)-1]
         eval = DB_data[lastKey]
         if eval >=179:
             return "弱", "movie1"
