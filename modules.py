@@ -177,7 +177,7 @@ class BasicProcess():
         eval = DB_data[num-1]["calorie"]
         if eval >=179:
             return "弱", "movie1"
-        elif eval < 179 amd eval >= 143:
+        elif eval < 179 and eval >= 143:
             return "中", "movie2"
         else:
             return "強", "movie3"
