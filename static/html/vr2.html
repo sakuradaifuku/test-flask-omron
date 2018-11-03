@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>ながら測定器</title>
+  <script src="//storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
+  <script>
+  var vrView_movie = new VRView.Player('#vrview_movie', {
+  video: '../video/sample_compressed.mp4', //imageで画像、videoで動画を表示。
+  width: '100%',
+  height: '100%',
+});
+</script>
 </head>
 <body>
-  <h1>あなたにおすすめの運動</h1>
-  <a-scene>
-    <a-assets>
-      <video id="video" autoplay="" loop="true" src="../video/sample_compressed.mp4">
-    </video></a-assets>
-    <a-videosphere src="#video"></a-videosphere>
-  </a-scene>
-</script>
+  <h1>おすすめの運動</h1>
+  <div id="vrview"></div>
 </video>
 </body>
 </html>
