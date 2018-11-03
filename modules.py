@@ -173,8 +173,8 @@ class BasicProcess():
         return rest
 
     def selectExercise(self, DB_data):
-        num = range(len(DB_data))-1
-        eval = DB_data[num-1]["calorie"]
+        #num = len(DB_data)-1
+        eval = DB_data[-1]["calorie"]
         if eval >=179:
             return "弱", "movie1"
         elif eval < 179 and eval >= 143:
