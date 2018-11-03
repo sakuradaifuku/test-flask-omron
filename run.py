@@ -25,7 +25,7 @@ def front_test():
         calorieperfiftForGraph = bp.getGraphDatas(calorieperfift, 15)
         currentCalorie = round(calorieperdayForGraph[currentDay],2) # ここで小数点以下2桁に整形
         restCalorie = round(bp.getRestCalorie(calorieperday),2) # ここで小数点以下2桁に整形
-        exerciseRank, movieNum = bp.selectExercise(restCalorie)
+        exerciseRank, movieNum = bp.selectExercise(calorieperfift)
         if exerciseRank=="達成済":
             restCalorie = 0
 
