@@ -130,17 +130,17 @@ class BasicProcess():
             sum += DB_data[num]["calorie"] # カロリーを加算
             if currentDay != nextDay: # 日が違った場合
                 date = "{0}/{1}".format(DB_data[num]["datetime"].month, currentDay)
-                caloriePerDay[date] = sum/1000 # currentDayの1日カロリーをリストに格納
+                caloriePerDay[date] = sum # currentDayの1日カロリーをリストに格納
                 if num+1 == len(DB_data)-1: # 日付が異なりつつ，最後のデータに到達していた場合
                     date = "{0}/{1}".format(DB_data[num+1]["datetime"].month, nextDay)
-                    caloriePerDay[date] = DB_data[num+1]["calorie"]/1000
+                    caloriePerDay[date] = DB_data[num+1]["calorie"]
                     break
                 sum = 0
 
             if num+1 == len(DB_data)-1: # 日付が一致しつつ，最後のデータに到達していた場合
                 date = "{0}/{1}".format(DB_data[num]["datetime"].month, currentDay)
                 sum += DB_data[num+1]["calorie"]
-                caloriePerDay[date] = sum/1000
+                caloriePerDay[date] = sum
             
         return caloriePerDay, date
 
