@@ -5,12 +5,15 @@ from modules import BasicProcess
 app = Flask(__name__)
 bp = BasicProcess()
 
+'''
 @app.route("/")
 def hello_world():
     message = "Hello Python!"
     return render_template("test.html", message = message)
+'''
 
-@app.route("/front_test")
+#@app.route("/front_test")
+@app.route("/")
 def front_test():
     dbData = bp.getDBCalorie()
     if not dbData: # DBが空だったら
