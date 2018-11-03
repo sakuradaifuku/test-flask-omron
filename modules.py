@@ -169,13 +169,11 @@ class BasicProcess():
         rest = self.minDayCalorie - caloriePerDay[getKey[num-1]]
         '''
         getValue = list(caloriePerDay.values())
-        rest = self.minDayCalorie - getValue[len(getValue)-1]
+        rest = self.minDayCalorie - getValue[len(getValue)-1]/1000
         return rest
 
     def selectExercise(self, DB_data):
         _keys = list(DB_data.keys())
-        print("\n\n\n\n\n{0}\n\n\n\n".format(DB_data))
-        print("\n\n\n\n\nkeys:{0}\n\n\n\n".format(_keys))
         lastKey = _keys[len(_keys)-1]
         eval = DB_data[lastKey]
         if eval >=179:
