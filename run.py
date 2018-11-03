@@ -24,7 +24,7 @@ def front_test():
         calorieperday, currentDay = bp.getDayConsumedCalorie(calories)
         calorieperfift = bp.get15minConsumedCaloire(calories)
 
-        calorieperdayForGraph = bp.getGraphDatas(calorieperday, 15)
+        calorieperdayForGraph = bp.getGraphDatas(calorieperday, 15) # キロに変換するのはJS側で．
         calorieperfiftForGraph = bp.getGraphDatas(calorieperfift, 15)
         currentCalorie = round(calorieperdayForGraph[currentDay]/1000,2) # ここで小数点以下2桁に整形
         restCalorie = round(bp.getRestCalorie(calorieperday),2) # ここで小数点以下2桁に整形
@@ -32,8 +32,9 @@ def front_test():
         if exerciseRank=="達成済":
             restCalorie = 0
 
-        print("\n\n\n\n(dbData): {0}\n\n\n\n".format(dbData))
-        print("\n\n\n\n(calorieperfiftForGraph): {0}\n\n\n\n".format(calorieperfiftForGraph))
+        # 確認用
+        #print("\n\n\n\n(dbData): {0}\n\n\n\n".format(dbData))
+        #print("\n\n\n\n(calorieperfiftForGraph): {0}\n\n\n\n".format(calorieperfiftForGraph))
         
     return render_template("front_test.html", 
                 calorieperday = calorieperdayForGraph, # リストに日本語含めないように．含める場合はテンプレート側のtojsonでは対応しにくい．

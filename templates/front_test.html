@@ -68,7 +68,7 @@
               var dCalories = []
               for(k in caloriePerDay){
                 dates.push(k)
-                dCalories.push(caloriePerDay[k])
+                dCalories.push(caloriePerDay[k]/1000) // ここでキロに変換
               }
               var targetData = (new Array(dates.length)).fill(2000)
     
